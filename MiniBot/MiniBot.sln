@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniBot", "MiniBot\MiniBot.csproj", "{D7209490-A10A-4C9C-B32A-514DE79A55B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogCustom", "LogCustom\LogCustom.csproj", "{2F3E0293-7468-49E2-9C97-6BA43856444A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D7209490-A10A-4C9C-B32A-514DE79A55B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7209490-A10A-4C9C-B32A-514DE79A55B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7209490-A10A-4C9C-B32A-514DE79A55B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3E0293-7468-49E2-9C97-6BA43856444A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3E0293-7468-49E2-9C97-6BA43856444A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3E0293-7468-49E2-9C97-6BA43856444A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3E0293-7468-49E2-9C97-6BA43856444A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

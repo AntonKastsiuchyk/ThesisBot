@@ -1,0 +1,410 @@
+
+  {
+    "Pizzas": {
+      "RivieraS": {
+        "Size": 22,
+        "Weight": 395,
+        "Name": "Riviera",
+        "Id": 1,
+        "Cost": 3.0,
+        "Description": "Garlic Sauce, Mozzarella cheese, Spinach, Cherry, Olives, Ham",
+        "Amount": 1
+      },
+      "RivieraM": {
+        "Size": 30,
+        "Weight": 670,
+        "Name": "Riviera",
+        "Id": 2,
+        "Cost": 4.5,
+        "Description": "Garlic Sauce, Mozzarella cheese, Spinach, Cherry, Olives, Ham",
+        "Amount": 1
+      },
+      "RivieraL": {
+        "Size": 36,
+        "Weight": 935,
+        "Name": "Riviera",
+        "Id": 3,
+        "Cost": 7.5,
+        "Description": "Garlic Sauce, Mozzarella cheese, Spinach, Cherry, Olives, Ham",
+        "Amount": 1
+      },
+      "CarbonaraS": {
+        "Size": 22,
+        "Weight": 365,
+        "Name": "Carbonara",
+        "Id": 4,
+        "Cost": 2.5,
+        "Description": "Onion, Bacon, Fresh Cream, Ham, Champignon, Mozzarella cheese",
+        "Amount": 1
+      },
+      "CarbonaraM": {
+        "Size": 30,
+        "Weight": 565,
+        "Name": "Carbonara",
+        "Id": 5,
+        "Cost": 3.5,
+        "Description": "Onion, Bacon, Fresh Cream, Ham, Champignon, Mozzarella cheese",
+        "Amount": 1
+      },
+      "CarbonaraL": {
+        "Size": 36,
+        "Weight": 855,
+        "Name": "Carbonara",
+        "Id": 6,
+        "Cost": 6.5,
+        "Description": "Onion, Bacon, Fresh Cream, Ham, Champignon, Mozzarella cheese",
+        "Amount": 1
+      },
+      "ChickenRanchS": {
+        "Size": 22,
+        "Weight": 375,
+        "Name": "Chicken Ranch",
+        "Id": 7,
+        "Cost": 2.3,
+        "Description": "Garlic Sauce, Tomatoes, Mozzarella cheese, Chicken",
+        "Amount": 1
+      },
+      "ChickenRanchM": {
+        "Size": 30,
+        "Weight": 635,
+        "Name": "Chicken Ranch",
+        "Id": 8,
+        "Cost": 3.5,
+        "Description": "Garlic Sauce, Tomatoes, Mozzarella cheese, Chicken",
+        "Amount": 1
+      },
+      "ChickenRanchL": {
+        "Size": 36,
+        "Weight": 945,
+        "Name": "Chicken Ranch",
+        "Id": 9,
+        "Cost": 6.3,
+        "Description": "Garlic Sauce, Tomatoes, Mozzarella cheese, Chicken",
+        "Amount": 1
+      },
+      "ProvenceS": {
+        "Size": 22,
+        "Weight": 380,
+        "Name": "Provence",
+        "Id": 10,
+        "Cost": 2.5,
+        "Description": "Tomatoes, Fresh Cream, Blue cheese, Mozzarella cheese, Ham, Pepperoni",
+        "Amount": 1
+      },
+      "ProvenceM": {
+        "Size": 30,
+        "Weight": 590,
+        "Name": "Provence",
+        "Id": 11,
+        "Cost": 3.8,
+        "Description": "Tomatoes, Fresh Cream, Blue cheese, Mozzarella cheese, Ham, Pepperoni",
+        "Amount": 1
+      },
+      "ProvenceL": {
+        "Size": 36,
+        "Weight": 900,
+        "Name": "Provence",
+        "Id": 12,
+        "Cost": 5.9,
+        "Description": "Tomatoes, Fresh Cream, Blue cheese, Mozzarella cheese, Ham, Pepperoni",
+        "Amount": 1
+      },
+      "MunichS": {
+        "Size": 22,
+        "Weight": 415,
+        "Name": "Munich",
+        "Id": 13,
+        "Cost": 3.7,
+        "Description": "Bavarian sausages, Tomatoes, Barbecue sauce, Mustard , Mozzarella cheese, Munich sausages, Ham",
+        "Amount": 1
+      },
+      "MunichM": {
+        "Size": 30,
+        "Weight": 650,
+        "Name": "Munich",
+        "Id": 14,
+        "Cost": 5.1,
+        "Description": "Bavarian sausages, Tomatoes, Barbecue sauce, Mustard , Mozzarella cheese, Munich sausages, Ham",
+        "Amount": 1
+      },
+      "MunichL": {
+        "Size": 36,
+        "Weight": 970,
+        "Name": "Munich",
+        "Id": 15,
+        "Cost": 7.1,
+        "Description": "Bavarian sausages, Tomatoes, Barbecue sauce, Mustard , Mozzarella cheese, Munich sausages, Ham",
+        "Amount": 1
+      },
+      "AlaskaS": {
+        "Size": 22,
+        "Weight": 355,
+        "Name": "Alaska",
+        "Id": 16,
+        "Cost": 2.3,
+        "Description": "Munich sausages, Onion, Burger sauce, Mozzarella cheese",
+        "Amount": 1
+      },
+      "AlaskaM": {
+        "Size": 30,
+        "Weight": 625,
+        "Name": "Alaska",
+        "Id": 17,
+        "Cost": 3.4,
+        "Description": "Munich sausages, Onion, Burger sauce, Mozzarella cheese",
+        "Amount": 1
+      },
+      "AlaskaL": {
+        "Size": 36,
+        "Weight": 885,
+        "Name": "Alaska",
+        "Id": 18,
+        "Cost": 5.3,
+        "Description": "Munich sausages, Onion, Burger sauce, Mozzarella cheese",
+        "Amount": 1
+      },
+      "FarmS": {
+        "Size": 22,
+        "Weight": 365,
+        "Name": "Farm",
+        "Id": 19,
+        "Cost": 2.4,
+        "Description": "Cucumbers, Ham, Mozzarella cheese, Garlic Sauce",
+        "Amount": 1
+      },
+      "FarmM": {
+        "Size": 30,
+        "Weight": 585,
+        "Name": "Farm",
+        "Id": 20,
+        "Cost": 3.3,
+        "Description": "Cucumbers, Ham, Mozzarella cheese, Garlic Sauce",
+        "Amount": 1
+      },
+      "FarmL": {
+        "Size": 36,
+        "Weight": 880,
+        "Name": "Farm",
+        "Id": 21,
+        "Cost": 5.7,
+        "Description": "Cucumbers, Ham, Mozzarella cheese, Garlic Sauce",
+        "Amount": 1
+      },
+      "SpicyS": {
+        "Size": 22,
+        "Weight": 390,
+        "Name": "Spicy",
+        "Id": 22,
+        "Cost": 2.6,
+        "Description": "Pepperoni, Jalapeno, Mozzarella cheese, Domino's Tomato Sauce, Bacon, Tomatoes",
+        "Amount": 1
+      },
+      "SpicyM": {
+        "Size": 30,
+        "Weight": 615,
+        "Name": "Spicy",
+        "Id": 23,
+        "Cost": 3.9,
+        "Description": "Pepperoni, Jalapeno, Mozzarella cheese, Domino's Tomato Sauce, Bacon, Tomatoes",
+        "Amount": 1
+      },
+      "SpicyL": {
+        "Size": 36,
+        "Weight": 915,
+        "Name": "Spicy",
+        "Id": 24,
+        "Cost": 7.3,
+        "Description": "Pepperoni, Jalapeno, Mozzarella cheese, Domino's Tomato Sauce, Bacon, Tomatoes",
+        "Amount": 1
+      },
+      "PepperoniSupremeS": {
+        "Size": 22,
+        "Weight": 415,
+        "Name": "Pepperoni Supreme",
+        "Id": 25,
+        "Cost": 2.7,
+        "Description": "Special Tomato Sauce, Mozzarella cheese, Pepperoni",
+        "Amount": 1
+      },
+      "PepperoniSupremeM": {
+        "Size": 30,
+        "Weight": 660,
+        "Name": "Pepperoni Supreme",
+        "Id": 26,
+        "Cost": 3.9,
+        "Description": "Special Tomato Sauce, Mozzarella cheese, Pepperoni",
+        "Amount": 1
+      },
+      "PepperoniSupremeL": {
+        "Size": 36,
+        "Weight": 965,
+        "Name": "Pepperoni Supreme",
+        "Id": 27,
+        "Cost": 7.3,
+        "Description": "Special Tomato Sauce, Mozzarella cheese, Pepperoni",
+        "Amount": 1
+      },
+      "BbqS": {
+        "Size": 22,
+        "Weight": 395,
+        "Name": "BBQ",
+        "Id": 28,
+        "Cost": 2.4,
+        "Description": "Onion, Chicken, Barbecue sauce, Bacon, Champignon, Mozzarella cheese",
+        "Amount": 1
+      },
+      "BbqM": {
+        "Size": 30,
+        "Weight": 580,
+        "Name": "BBQ",
+        "Id": 29,
+        "Cost": 3.5,
+        "Description": "Onion, Chicken, Barbecue sauce, Bacon, Champignon, Mozzarella cheese",
+        "Amount": 1
+      },
+      "BbqL": {
+        "Size": 36,
+        "Weight": 900,
+        "Name": "BBQ",
+        "Id": 30,
+        "Cost": 7.2,
+        "Description": "Onion, Chicken, Barbecue sauce, Bacon, Champignon, Mozzarella cheese",
+        "Amount": 1
+      },
+      "PepperoniBluesS": {
+        "Size": 22,
+        "Weight": 350,
+        "Name": "Pepperoni Blues",
+        "Id": 31,
+        "Cost": 2.2,
+        "Description": "Mozzarella cheese, Garlic Sauce, Pepperoni, Blue cheese",
+        "Amount": 1
+      },
+      "PepperoniBluesM": {
+        "Size": 30,
+        "Weight": 525,
+        "Name": "Pepperoni Blues",
+        "Id": 32,
+        "Cost": 3.1,
+        "Description": "Mozzarella cheese, Garlic Sauce, Pepperoni, Blue cheese",
+        "Amount": 1
+      },
+      "PepperoniBluesL": {
+        "Size": 36,
+        "Weight": 785,
+        "Name": "Pepperoni Blues",
+        "Id": 33,
+        "Cost": 6.0,
+        "Description": "Mozzarella cheese, Garlic Sauce, Pepperoni, Blue cheese",
+        "Amount": 1
+      },
+      "TuscanyS": {
+        "Size": 22,
+        "Weight": 380,
+        "Name": "Tuscany",
+        "Id": 34,
+        "Cost": 2.4,
+        "Description": "Tomatoes, Feta, Chicken, Mozzarella cheese, Garlic Sauce, Spinach",
+        "Amount": 1
+      },
+      "TuscanyM": {
+        "Size": 30,
+        "Weight": 600,
+        "Name": "Tuscany",
+        "Id": 35,
+        "Cost": 4,
+        "Description": "Tomatoes, Feta, Chicken, Mozzarella cheese, Garlic Sauce, Spinach",
+        "Amount": 1
+      },
+      "TuscanyL": {
+        "Size": 36,
+        "Weight": 880,
+        "Name": "Tuscany",
+        "Id": 36,
+        "Cost": 7.4,
+        "Description": "Tomatoes, Feta, Chicken, Mozzarella cheese, Garlic Sauce, Spinach",
+        "Amount": 1
+      },
+      "HeartyS": {
+        "Size": 22,
+        "Weight": 370,
+        "Name": "Hearty",
+        "Id": 37,
+        "Cost": 2.6,
+        "Description": "Pepperoni, Bavarian sausages, Burger sauce, Mozzarella cheese",
+        "Amount": 1
+      },
+      "HeartyM": {
+        "Size": 30,
+        "Weight": 645,
+        "Name": "Hearty",
+        "Id": 38,
+        "Cost": 4.1,
+        "Description": "Pepperoni, Bavarian sausages, Burger sauce, Mozzarella cheese",
+        "Amount": 1
+      },
+      "HeartyL": {
+        "Size": 36,
+        "Weight": 950,
+        "Name": "Hearty",
+        "Id": 39,
+        "Cost": 7.3,
+        "Description": "Pepperoni, Bavarian sausages, Burger sauce, Mozzarella cheese",
+        "Amount": 1
+      },
+      "HawaiianS": {
+        "Size": 22,
+        "Weight": 415,
+        "Name": "Hawaiian",
+        "Id": 40,
+        "Cost": 2.3,
+        "Description": "Chicken, Mozzarella cheese, Domino's Tomato Sauce, Pineapple, Ham",
+        "Amount": 1
+      },
+      "HawaiianM": {
+        "Size": 30,
+        "Weight": 660,
+        "Name": "Hawaiian",
+        "Id": 41,
+        "Cost": 4.0,
+        "Description": "Chicken, Mozzarella cheese, Domino's Tomato Sauce, Pineapple, Ham",
+        "Amount": 1
+      },
+      "HawaiianL": {
+        "Size": 36,
+        "Weight": 995,
+        "Name": "Hawaiian",
+        "Id": 42,
+        "Cost": 7.3,
+        "Description": "Chicken, Mozzarella cheese, Domino's Tomato Sauce, Pineapple, Ham",
+        "Amount": 1
+      },
+      "Ham&MushroomsS": {
+        "Size": 22,
+        "Weight": 385,
+        "Name": "Ham & Mushrooms",
+        "Id": 43,
+        "Cost": 2.0,
+        "Description": "Special Tomato Sauce, Mozzarella cheese, Ham, Champignon",
+        "Amount": 1
+      },
+      "Ham&MushroomsM": {
+        "Size": 30,
+        "Weight": 660,
+        "Name": "Ham & Mushrooms",
+        "Id": 44,
+        "Cost": 3.3,
+        "Description": "Special Tomato Sauce, Mozzarella cheese, Ham, Champignon",
+        "Amount": 1
+      },
+      "Ham&MushroomsL": {
+        "Size": 36,
+        "Weight": 935,
+        "Name": "Ham & Mushrooms",
+        "Id": 45,
+        "Cost": 4.9,
+        "Description": "Special Tomato Sauce, Mozzarella cheese, Ham, Champignon",
+        "Amount": 1
+      }
+    }
+  }

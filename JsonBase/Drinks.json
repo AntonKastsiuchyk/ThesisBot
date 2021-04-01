@@ -1,0 +1,60 @@
+{
+  "Drinks": {
+    "CocaColaS": {
+      "Volume": 0.5,
+      "Name": "Coca Cola",
+      "Id": 1,
+      "Cost": 1,
+      "Description": "Coca-Cola. Enjoy. It is a sweet, carbonated cola with little mouthfeel or aftertaste.",
+      "Amount": 1
+    },
+    "CocaColaM": {
+      "Volume": 1,
+      "Name": "Coca Cola",
+      "Id": 2,
+      "Cost": 1.5,
+      "Description": "Coca-Cola. Enjoy. It is a sweet, carbonated cola with little mouthfeel or aftertaste.",
+      "Amount": 1
+    },
+    "AppleJuice": {
+      "Volume": 0.33,
+      "Name": "Apple Juice \"Rich\"",
+      "Id": 3,
+      "Cost": 1.2,
+      "Description": "Apple juice \"Rich\". Perfect taste and high quality.",
+      "Amount": 1
+    },
+    "OrangeJuice": {
+      "Volume": 0.33,
+      "Name": "Orange Juice \"Rich\"",
+      "Id": 4,
+      "Cost": 1.2,
+      "Description": "Orange juice \"Rich\". Perfect taste and high quality.",
+      "Amount": 1
+    },
+    "CherryJuice": {
+      "Volume": 0.33,
+      "Name": "Cherry Juice \"Rich\"",
+      "Id": 5,
+      "Cost": 1.2,
+      "Description": "Cherry juice \"Rich\". Perfect taste and high quality.",
+      "Amount": 1
+    },
+    "BlackTea": {
+      "Volume": 0.33,
+      "Name": "Black Tea \"Grinfield\"",
+      "Id": 6,
+      "Cost": 1.2,
+      "Description": "Black Tea \"Grinfield Golden Ceylon\". Bright aroma and noble flavour of Ceylon tea have conquered the world.",
+      "Amount": 1
+    },
+    "GreenTea": {
+      "Volume": 0.33,
+      "Name": "Green Tea \"Grinfield\"",
+      "Id": 7,
+      "Cost": 1.2,
+      "Description": "Green Tea \"Grinfield Flying Dragon\". Classic mild flavour and exquisite flowery aroma of tea refreshes and invigorates your mind.",
+      "Amount": 1
+    }
+  }
+}
