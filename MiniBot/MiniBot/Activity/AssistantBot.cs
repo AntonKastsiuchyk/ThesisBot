@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiniBot.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace MiniBot.Activity
 {
-    class AssistantBot
+    sealed class AssistantBot
     {
-        public static void Hello()
+        public Basket Basket { get; set; }
+        public User User { get; set; }
+
+        internal static void Hello()
         {
             switch (true)
             {
@@ -29,9 +33,24 @@ namespace MiniBot.Activity
                     break;
             }
         }
-        public static void GetNameOfUser()
+        internal static void ShowMenuForUser()
         {
-
+            Console.WriteLine("Are you want to see our menu? (y or n)");
+            startloop:
+            string answer = Console.ReadLine().ToUpper();
+            switch (answer)
+            {
+                case "Y":
+                    Console.WriteLine($"1 - Pizzas\n2-Drinks");
+                    break;
+                case "N":
+                    Console.WriteLine("Thanks for your attention. Goodbye!");
+                    break;
+                default:
+                    Console.WriteLine("Please input correct answer. (y or n)");
+                    goto startloop;
+            }
         }
+
     }
 }

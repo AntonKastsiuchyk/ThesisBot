@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MiniBot.Entities
+namespace MiniBot.Interfaces
 {
-    sealed class Basket
+    public interface IShowInfo
     {
-        private static List<Product> _products = new List<Product>();
+        string ShowInfo();
     }
 }

@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 
 namespace MiniBot.Entities
 {
-    class Drink : Product
+    sealed class Drink : Product
     {
-        public float Volume { get; private set; }
+        public float Volume { get; set; }
 
         public Drink(string name, int id, float cost, string description, byte amount, float volume)
         {
             Volume = volume;
         }
+
         public Drink()
         {
-
         }
+
         public override string ToString()
         {
-            return base.ToString();
+            return $"{Id} {Name} \nCost {Cost}$, Volume {Volume}l \n{Description}";
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiniBot.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,16 +7,12 @@ using System.Threading.Tasks;
 
 namespace MiniBot.Entities
 {
-    class Product
+    class Product : IShowInfo
     {
         public string Name { get; set; }
-
         public int Id { get; set; }
-
         public float Cost { get; set; }
-
         public string Description { get; set; }
-
         public byte Amount { get; set; }
 
         public Product()
@@ -35,6 +32,11 @@ namespace MiniBot.Entities
         public override string ToString()
         {
             return $"Name {Name}, Cost {Cost}$, Description {Description}";
+        }
+
+        public string ShowInfo()
+        {
+            return $"Name {Name}, Description {Description}";
         }
     }
 }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MiniBot.Interfaces;
 
 namespace MiniBot.Entities
 {
-    class Pizza : Product
+    sealed class Pizza : Product
     {
         public int Size { get; set; }
 
@@ -20,11 +21,12 @@ namespace MiniBot.Entities
 
         public Pizza()
         {
+
         }
 
         public override string ToString()
         {
-            return $"Name {Name}, Cost {Cost}, Size {Size}, Description {Description}, Weight {Weight}";
+            return $"{Id} {Name} \nCost {Cost}$, Size {Size}cm, Weight {Weight}gms \n{Description}";
         }
     }
 }

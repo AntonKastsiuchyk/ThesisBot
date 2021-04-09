@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MiniBot.Entities
+namespace MiniBot.Activity
 {
-    sealed class Basket
+    class Support
     {
-        private static List<Product> _products = new List<Product>();
+
     }
 }

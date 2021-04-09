@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace MiniBot.Entities
 {
-    class User
+    sealed class User
     {
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
-        public string Email { get; private set; }
+        public string Email { get; set; }
 
-        public string Adress { get; private set; }
+        public string Adress { get; set; }
+
+        internal string GetNameOfUser(User user)
+        {
+            Console.WriteLine("Please input your name: ");
+            return user.Name = Console.ReadLine();
+        }
     }
 }
