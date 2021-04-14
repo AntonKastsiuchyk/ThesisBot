@@ -13,11 +13,9 @@ namespace MiniBot
     {
         static void Main(string[] args)
         {
-            DrinkRepository drinkRepository = new DrinkRepository();
-            drinkRepository.GetProducts();
-            PizzaRepository pizzaRepository = new PizzaRepository();
-            pizzaRepository.GetProducts();
-            Console.WriteLine();
+            AssistantBot.Hello();
+            AssistantBot.ShowMenuForUser();
+            AssistantBot.ShowProducts();
         }
-}
+    }
 }

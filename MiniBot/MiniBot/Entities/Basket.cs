@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MiniBot.Entities
 {
-    sealed class Basket
+    class Basket
     {
-        private static List<Product> _products = new List<Product>();
+        
     }
 }

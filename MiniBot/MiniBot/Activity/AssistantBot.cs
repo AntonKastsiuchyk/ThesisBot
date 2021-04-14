@@ -1,4 +1,6 @@
-﻿using MiniBot.Entities;
+﻿using LogCustom;
+using MiniBot.Entities;
+using MiniBot.ProductRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +11,9 @@ namespace MiniBot.Activity
 {
     sealed class AssistantBot
     {
-        public Basket Basket { get; set; }
-        public User User { get; set; }
-
         internal static void Hello()
         {
+            Logger.Debug($"{Support.GetInfoLog()}. Greeting. Start debug.");
             switch (true)
             {
                 case bool morning when morning = DateTime.Now.Hour >= 8 && DateTime.Now.Hour < 12:
@@ -36,21 +36,48 @@ namespace MiniBot.Activity
         internal static void ShowMenuForUser()
         {
             Console.WriteLine("Are you want to see our menu? (y or n)");
-            startloop:
+            Console.ForegroundColor = ConsoleColor.Green;
+            Startloop:
             string answer = Console.ReadLine().ToUpper();
+            Console.ResetColor();
             switch (answer)
             {
                 case "Y":
-                    Console.WriteLine($"1 - Pizzas\n2-Drinks");
+                    Console.WriteLine($"\t1 - Pizzas\n\t2 - Drinks\n\t3 - Exit");
+                    Console.WriteLine("Please input number: ");
                     break;
                 case "N":
                     Console.WriteLine("Thanks for your attention. Goodbye!");
                     break;
                 default:
                     Console.WriteLine("Please input correct answer. (y or n)");
-                    goto startloop;
+                    goto Startloop;
+            }
+            
+        }
+        internal static void ShowProducts()
+        {
+            Startloop:
+            Console.ForegroundColor = ConsoleColor.Green;
+            string answer = Console.ReadLine();
+            Console.ResetColor();
+            switch (answer)
+            {
+                case "1":
+                    PizzaRepository pizzaRepository = new PizzaRepository();
+                    pizzaRepository.GetProducts();
+                    break;
+                case "2":
+                    DrinkRepository drinkRepository = new DrinkRepository();
+                    drinkRepository.GetProducts();
+                    break;
+                case "3":
+                    Console.WriteLine("Thanks for your attention. Goodbye!");
+                    break;
+                default:
+                    Console.WriteLine("Please input correct answer. (1, 2, 3)");
+                    goto Startloop;
             }
         }
-
     }
 }

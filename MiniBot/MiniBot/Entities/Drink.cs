@@ -21,7 +21,7 @@ namespace MiniBot.Entities
 
         public override string ToString()
         {
-            return $"{Id} {Name} \nCost {Cost}$, Volume {Volume}l \n{Description}";
+            return $"{Id}. {Name} \nCost {Cost}$ | Volume {Volume}l \n{Description}\n";
         }
     }
 }
