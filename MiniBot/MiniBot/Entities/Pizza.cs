@@ -13,7 +13,7 @@ namespace MiniBot.Entities
 
         public int Weight { get; set; }
 
-        public Pizza(string name, int id, float cost, string description, byte amount, int size, int weight)
+        public Pizza(string name, byte id, float cost, string description, byte amount, int size, int weight)
         {
             Size = size;
             Weight = weight;
@@ -21,7 +21,6 @@ namespace MiniBot.Entities
 
         public Pizza()
         {
-
         }
 
         public override string ToString()

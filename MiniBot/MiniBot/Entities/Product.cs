@@ -10,7 +10,7 @@ namespace MiniBot.Entities
     class Product : IShowInfo
     {
         public string Name { get; set; }
-        public int Id { get; set; }
+        public byte Id { get; set; }
         public float Cost { get; set; }
         public string Description { get; set; }
         public byte Amount { get; set; }
@@ -20,7 +20,7 @@ namespace MiniBot.Entities
 
         }
 
-        public Product(string name, int id, float cost, string description, byte amount)
+        public Product(string name, byte id, float cost, string description, byte amount)
         {
             Name = name;
             Id = id;

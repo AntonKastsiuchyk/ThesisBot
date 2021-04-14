@@ -10,7 +10,7 @@ namespace MiniBot.Entities
     {
         public float Volume { get; set; }
 
-        public Drink(string name, int id, float cost, string description, byte amount, float volume)
+        public Drink(string name, byte id, float cost, string description, byte amount, float volume)
         {
             Volume = volume;
         }

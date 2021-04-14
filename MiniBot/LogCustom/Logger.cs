@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace LogCustom
@@ -10,18 +12,23 @@ namespace LogCustom
     {
         public static void Debug(string messageTemplate) 
         {
+            var methodInfo = new StackFrame(1).GetMethod();
             LogWriter logWriter = new LogWriter();
-            logWriter.LogWriteDebug(messageTemplate);
+            logWriter.LogWriteDebug($"Namespace: {methodInfo.ReflectedType.FullName}. Method: {methodInfo.Name}.\n" + $"Message: {messageTemplate}");
         }
+
         public static void Info(string messageTemplate)
         {
+            var methodInfo = new StackFrame(1).GetMethod();
             LogWriter logWriter = new LogWriter();
-            logWriter.LogWriteInfo(messageTemplate);
+            logWriter.LogWriteInfo($"Namespace: {methodInfo.ReflectedType.FullName}. Method: {methodInfo.Name}.\n" + $"Message: {messageTemplate}");
         }
+
         public static void Error(string messageTemplate)
         {
+            var methodInfo = new StackFrame(1).GetMethod();
             LogWriter logWriter = new LogWriter();
-            logWriter.LogWriteError(messageTemplate);
+            logWriter.LogWriteError($"Namespace: {methodInfo.ReflectedType.FullName}. Method: {methodInfo.Name}.\n" + $"Message: {messageTemplate}");
         }
     }
 }

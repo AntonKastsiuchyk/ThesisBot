@@ -13,7 +13,7 @@ namespace MiniBot.Activity
     {
         internal static void Hello()
         {
-            Logger.Debug($"{Support.GetInfoLog()}. Greeting. Start debug.");
+            Logger.Debug("Greeting. Start debug.");
             switch (true)
             {
                 case bool morning when morning = DateTime.Now.Hour >= 8 && DateTime.Now.Hour < 12:
@@ -33,31 +33,16 @@ namespace MiniBot.Activity
                     break;
             }
         }
+
         internal static void ShowMenuForUser()
         {
-            Console.WriteLine("Are you want to see our menu? (y or n)");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Startloop:
-            string answer = Console.ReadLine().ToUpper();
-            Console.ResetColor();
-            switch (answer)
-            {
-                case "Y":
-                    Console.WriteLine($"\t1 - Pizzas\n\t2 - Drinks\n\t3 - Exit");
-                    Console.WriteLine("Please input number: ");
-                    break;
-                case "N":
-                    Console.WriteLine("Thanks for your attention. Goodbye!");
-                    break;
-                default:
-                    Console.WriteLine("Please input correct answer. (y or n)");
-                    goto Startloop;
-            }
-            
+            Console.WriteLine("Please choose position from our menu, what you want to see. \n\tMenu:");
+            Console.WriteLine($"\t1 - Pizzas\n\t2 - Drinks\n\t3 - Exit");
         }
+
         internal static void ShowProducts()
         {
-            Startloop:
+        Startloop:
             Console.ForegroundColor = ConsoleColor.Green;
             string answer = Console.ReadLine();
             Console.ResetColor();
