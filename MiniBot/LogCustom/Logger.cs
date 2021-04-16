@@ -2,33 +2,54 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 
 namespace LogCustom
 {
     public sealed class Logger
     {
-        public static void Debug(string messageTemplate) 
+        public static void Debug(string messageTemplate)
         {
             var methodInfo = new StackFrame(1).GetMethod();
+            Thread thread = Thread.CurrentThread;
             LogWriter logWriter = new LogWriter();
-            logWriter.LogWriteDebug($"Namespace: {methodInfo.ReflectedType.FullName}. Method: {methodInfo.Name}.\n" + $"Message: {messageTemplate}");
+            logWriter.LogWriteDebug($"Thread: Priority: {thread.Priority}, Id: {thread.ManagedThreadId}, Background: {thread.IsBackground}, " +
+                $"Pool: {thread.IsThreadPoolThread}, State: {thread.ThreadState}."
+                + $"\nLocation: Namespace: {methodInfo.ReflectedType.FullName}." +
+                $" Method: {methodInfo.Name}." + $"\nMessage: {messageTemplate}");
         }
 
         public static void Info(string messageTemplate)
         {
             var methodInfo = new StackFrame(1).GetMethod();
-            LogWriter logWriter = new LogWriter();
-            logWriter.LogWriteInfo($"Namespace: {methodInfo.ReflectedType.FullName}. Method: {methodInfo.Name}.\n" + $"Message: {messageTemplate}");
+            Thread thread = Thread.CurrentThread;
+
+            Type logWriter = typeof(LogWriter);
+            ConstructorInfo ctor = logWriter.GetTypeInfo().DeclaredConstructors.FirstOrDefault();
+            object[] args = new object[] { };
+            object obj = ctor.Invoke(args);
+            MethodInfo methodLogWriteInfo = obj.GetType().GetTypeInfo().GetDeclaredMethod("LogWriteInfo");
+            string resultLogString = $"Thread: Priority: {thread.Priority}, Id: {thread.ManagedThreadId}, Background: {thread.IsBackground}, " +
+               $"Pool: {thread.IsThreadPoolThread}, State: {thread.ThreadState}."
+               + $"\nLocation: Namespace: {methodInfo.ReflectedType.FullName}." +
+               $" Method: {methodInfo.Name}." + $"\nMessage: {messageTemplate}";
+
+            var methodResult = methodLogWriteInfo.Invoke(obj, new object[] { resultLogString });
         }
 
         public static void Error(string messageTemplate)
         {
             var methodInfo = new StackFrame(1).GetMethod();
+            Thread thread = Thread.CurrentThread;
             LogWriter logWriter = new LogWriter();
-            logWriter.LogWriteError($"Namespace: {methodInfo.ReflectedType.FullName}. Method: {methodInfo.Name}.\n" + $"Message: {messageTemplate}");
+            logWriter.LogWriteError($"Thread: Priority: {thread.Priority}, Id: {thread.ManagedThreadId}, Background: {thread.IsBackground}, " +
+                $"Pool: {thread.IsThreadPoolThread}, State: {thread.ThreadState}."
+                + $"\nLocation: Namespace: {methodInfo.ReflectedType.FullName}." +
+                $" Method: {methodInfo.Name}." + $"\nMessage: {messageTemplate}");
         }
     }
 }

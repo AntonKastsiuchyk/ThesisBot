@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,7 +45,7 @@ namespace LogCustom
             }
         }
 
-        internal void LogWriteInfo(string logMessage)
+        void LogWriteInfo(string logMessage)
         {
             FileInfo fileInfo = new FileInfo(_nameOfFile.ToString());
             int counterFileName = 1;
@@ -113,7 +112,7 @@ namespace LogCustom
         void LogForDebug(string logMessage, TextWriter txtWriter)
         {
             txtWriter.Write("\r\n[Debug]: ");
-            txtWriter.WriteLine("{0} {1}", DateTime.UtcNow.ToLongTimeString(),
+            txtWriter.WriteLine("(UTC) {0} {1}", DateTime.UtcNow.ToLongTimeString(),
                 DateTime.UtcNow.ToLongDateString());
             txtWriter.WriteLine($"{logMessage}");
             txtWriter.WriteLine("-------------------------------");
@@ -122,8 +121,8 @@ namespace LogCustom
         void LogForInfo(string logMessage, TextWriter txtWriter)
         { 
             txtWriter.Write("\r\n[Info]: ");
-            txtWriter.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(),
-                DateTime.Now.ToLongDateString());
+            txtWriter.WriteLine("(UTC) {0} {1}", DateTime.UtcNow.ToLongTimeString(),
+                DateTime.UtcNow.ToLongDateString());
             txtWriter.WriteLine($"{logMessage}");
             txtWriter.WriteLine("-------------------------------");
         }
@@ -131,8 +130,8 @@ namespace LogCustom
         void LogForError(string logMessage, TextWriter txtWriter)
         {
             txtWriter.Write("\r\n[Error]: ");
-            txtWriter.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(),
-                DateTime.Now.ToLongDateString());
+            txtWriter.WriteLine("(UTC) {0} {1}", DateTime.UtcNow.ToLongTimeString(),
+                DateTime.UtcNow.ToLongDateString());
             txtWriter.WriteLine($"{logMessage}");
             txtWriter.WriteLine("-------------------------------");
         }

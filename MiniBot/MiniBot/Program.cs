@@ -15,7 +15,6 @@ namespace MiniBot
         {
             AssistantBot.Hello();
             AssistantBot.ShowMenuForUser();
-            AssistantBot.ShowProducts();
         }
     }
 }
