@@ -13,17 +13,17 @@ namespace MiniBot.ProductRepositories
     {
         static List<Drink> _drinks = new List<Drink>();
 
-        public void DeleteProductById(int id)
-        {
-            var item = _drinks.Where(i => i.Id == id).FirstOrDefault();
-            _drinks.Remove(item);
-        }
+        //public void DeleteProductById(int id)
+        //{
+        //    var item = _drinks.Where(i => i.Id == id).FirstOrDefault();
+        //    _drinks.Remove(item);
+        //}
 
-        public Drink GetProductById(int id)
-        {
-            Console.WriteLine(_drinks.Where(i => i.Id == id).FirstOrDefault().ToString());
-            return _drinks.Where(i => i.Id == id).FirstOrDefault();
-        }
+        //public Drink GetProductById(int id)
+        //{
+        //    Console.WriteLine(_drinks.Where(i => i.Id == id).FirstOrDefault().ToString());
+        //    return _drinks.Where(i => i.Id == id).FirstOrDefault();
+        //}
 
         public IEnumerable<Drink> GetProducts()
         {

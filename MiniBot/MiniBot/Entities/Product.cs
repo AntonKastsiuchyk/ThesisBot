@@ -36,7 +36,7 @@ namespace MiniBot.Entities
 
         public string ShowInfo()
         {
-            return $"Name {Name}, Cost {Cost}, Amount {Amount}";
+            return $"№{Id}. Name {Name}, Cost {Cost}, Amount {Amount}";
         }
     }
 }

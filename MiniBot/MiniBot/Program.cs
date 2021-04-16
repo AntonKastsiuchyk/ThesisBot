@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using MiniBot.Activity;
 using MiniBot.ProductRepositories;
 using LogCustom;
+using MiniBot.Repositories.BasketRepository;
 
 namespace MiniBot
 {

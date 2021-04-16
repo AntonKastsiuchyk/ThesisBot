@@ -10,7 +10,7 @@ namespace MiniBot.ProductRepositories
     interface IProductRepository<T>
     {
         IEnumerable<T> GetProducts();
-        T GetProductById(int id);
-        void DeleteProductById(int id);
+        //T GetProductById(int id);
+        //void DeleteProductById(int id);
     }
 }
