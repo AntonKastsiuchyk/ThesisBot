@@ -13,18 +13,6 @@ namespace MiniBot.ProductRepositories
     {
         static List<Pizza> _pizzas = new List<Pizza>();
 
-        //public void DeleteProductById(int id)
-        //{
-        //    var item = _pizzas.Where(i => i.Id == id).FirstOrDefault();
-        //    _pizzas.Remove(item);
-        //}
-
-        //public Pizza GetProductById(int id)
-        //{
-        //    Pizza pizza = _pizzas.Where(i => i.Id == id).FirstOrDefault();
-        //    return pizza;
-        //}
-
         public IEnumerable<Pizza> GetProducts()
         {
             ProductViewModel product = JsonConvert.DeserializeObject<ProductViewModel>

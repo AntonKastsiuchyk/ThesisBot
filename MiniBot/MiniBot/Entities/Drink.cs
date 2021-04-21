@@ -10,18 +10,19 @@ namespace MiniBot.Entities
     {
         public float Volume { get; set; }
 
-        public Drink(string name, byte id, float cost, string description, byte amount, float volume)
+        public Drink(string name, int id, float cost, string description, int amount, float volume)
         {
             Volume = volume;
+        }
+
+        public override string ToString()
+        {
+            return $"№ {Id}. {Name} \nCost {Cost}$ | Volume {Volume}l \n{Description}\n";
         }
 
         public Drink()
         {
         }
 
-        public override string ToString()
-        {
-            return $"{Id}. {Name} \nCost {Cost}$ | Volume {Volume}l \n{Description}\n";
-        }
     }
 }

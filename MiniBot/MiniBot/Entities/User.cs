@@ -20,7 +20,10 @@ namespace MiniBot.Entities
         internal string GetName(User user)
         {
             Console.WriteLine("Please input your name: ");
-            return user.Name = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Green;
+            string name = Console.ReadLine();
+            Console.ResetColor();
+            return user.Name = name;
         }
 
         internal string GetAdress(User user)
@@ -44,10 +47,12 @@ namespace MiniBot.Entities
 
             Console.WriteLine("Flat number: ");
             Console.ForegroundColor = ConsoleColor.Green;
-            var numberOfFlat = GetIntFromConsole();
+            var numberOfFlat = Support.Support.GetIntFromConsole();
             Console.ResetColor();
 
-            return $"{city}, {street}, {numberOfHouse} - {numberOfFlat}";
+            user.Adress = $"{city}, {street}, {numberOfHouse} - {numberOfFlat}";
+
+            return user.Adress;
         }
 
         internal string GetEmail(User user)
@@ -110,28 +115,6 @@ namespace MiniBot.Entities
             {
                 throw new EmailMessageException($"Email is invalid: {email}.");
             }
-        }
-
-        static int GetIntFromConsole()
-        {
-            bool isInt = false;
-            int result = default;
-            while (!isInt)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                if (int.TryParse(Console.ReadLine(), out result))
-                {
-                    Console.ResetColor();
-                    isInt = true;
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Incorrect value. Please input integer value.");
-                    Console.ResetColor();
-                }
-            }
-            return result;
         }
     }
 }

@@ -10,17 +10,12 @@ namespace MiniBot.Entities
     class Product : IShowInfo
     {
         public string Name { get; set; }
-        public byte Id { get; set; }
+        public int Id { get; set; }
         public float Cost { get; set; }
         public string Description { get; set; }
-        public byte Amount { get; set; }
+        public int Amount { get; set; }
 
-        public Product()
-        {
-
-        }
-
-        public Product(string name, byte id, float cost, string description, byte amount)
+        public Product(string name, int id, float cost, string description, int amount)
         {
             Name = name;
             Id = id;
@@ -29,14 +24,13 @@ namespace MiniBot.Entities
             Amount = amount;
         }
 
-        public override string ToString()
-        {
-            return $"Name {Name}, Cost {Cost}$, Description {Description}";
-        }
-
         public string ShowInfo()
         {
-            return $"№{Id}. Name {Name}, Cost {Cost}, Amount {Amount}";
+            return $"\n\t№ {Id}. {Name}. Cost {Cost}$. {Amount} pc.";
+        }
+
+        public Product()
+        {
         }
     }
 }

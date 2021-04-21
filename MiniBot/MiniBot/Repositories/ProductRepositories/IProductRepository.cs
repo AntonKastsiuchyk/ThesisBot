@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace MiniBot.ProductRepositories
 {
-    interface IProductRepository<T>
+    interface IProductRepository<T> where T : IShowInfo
     {
         IEnumerable<T> GetProducts();
-        //T GetProductById(int id);
-        //void DeleteProductById(int id);
     }
 }
