@@ -19,6 +19,7 @@ namespace MiniBot.ProductRepositories
                 (File.ReadAllText
                 (@"C:\Users\user\source\repos\AntonKastsiuchyk\ITAcademy.MiniBot\MiniBot\MiniBot\bin\Debug\net5.0\JsonBase\ProductViewModel.json"));
 
+            Console.WriteLine();
             foreach (Pizza item in product.Pizzas)
             {
                 Console.WriteLine(item.ToString());

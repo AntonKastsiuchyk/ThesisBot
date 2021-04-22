@@ -23,6 +23,5 @@ namespace MiniBot.Entities
         public Drink()
         {
         }
-
     }
 }

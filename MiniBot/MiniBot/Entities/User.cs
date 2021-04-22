@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace MiniBot.Entities
 {
+    [DebuggerDisplay("Name = {Name}; Email = {Email}; Adress = {Adress}")]
     sealed class User
     {
         public string Name { get; set; }
@@ -23,6 +24,7 @@ namespace MiniBot.Entities
             Console.ForegroundColor = ConsoleColor.Green;
             string name = Console.ReadLine();
             Console.ResetColor();
+
             return user.Name = name;
         }
 
@@ -62,6 +64,7 @@ namespace MiniBot.Entities
             Console.ForegroundColor = ConsoleColor.Green;
             string email = Console.ReadLine();
             Console.ResetColor();
+
             try
             {
                 CheckEmail(email);

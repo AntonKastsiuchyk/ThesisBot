@@ -1,12 +1,14 @@
 ﻿using MiniBot.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MiniBot.Entities
 {
+    [DebuggerDisplay("Id = {Id}; Amount = {Amount}")]
     class Product : IShowInfo
     {
         public string Name { get; set; }

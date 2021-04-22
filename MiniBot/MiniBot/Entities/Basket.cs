@@ -73,13 +73,20 @@ namespace MiniBot.Entities
         internal IEnumerable<Product> GetProducts()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\nBASKET:");
-
-            foreach (var product in _products)
+            if (!CheckForEmpty())
             {
-                Console.WriteLine(product.ShowInfo());
+                Console.WriteLine("\nBASKET:");
+                List<Product> sortedList = _products.OrderBy(i => i.Id).ToList();
+                foreach (var product in sortedList)
+                {
+                    Console.WriteLine(product.ShowInfo());
+                }
+                Console.WriteLine("\nTotal price of your order: {0:0.00}$", TotalPrice);
             }
-            Console.WriteLine("\nTotal price of your order: {0:0.00}$", TotalPrice);
+            else
+            {
+                Console.WriteLine("\nBASKET:\n\t Empty :(");
+            }
             Console.ResetColor();
             return _products;
         }
@@ -90,6 +97,7 @@ namespace MiniBot.Entities
             _products.Remove(product);
             product.Amount = amount;
             _products.Add(product);
+
         }
 
         internal bool CheckReplicant(int id)
@@ -111,6 +119,16 @@ namespace MiniBot.Entities
             {
                 Console.WriteLine($"{i + 1}. {_products[i].Name} - {_products[i].Amount} pc.");
             }
+        }
+
+        internal static bool CheckForEmpty()
+        {
+            bool result = false;
+            if (_products.Count == 0)
+            {
+                result = true;
+            }
+            return result;
         }
     }
 }

@@ -115,7 +115,7 @@ namespace LogCustom
             txtWriter.WriteLine("(UTC) {0} {1}", DateTime.UtcNow.ToLongTimeString(),
                 DateTime.UtcNow.ToLongDateString());
             txtWriter.WriteLine($"{logMessage}");
-            txtWriter.WriteLine("-------------------------------");
+            txtWriter.WriteLine("_______________________________");
         }
 
         void LogForInfo(string logMessage, TextWriter txtWriter)
@@ -124,7 +124,7 @@ namespace LogCustom
             txtWriter.WriteLine("(UTC) {0} {1}", DateTime.UtcNow.ToLongTimeString(),
                 DateTime.UtcNow.ToLongDateString());
             txtWriter.WriteLine($"{logMessage}");
-            txtWriter.WriteLine("-------------------------------");
+            txtWriter.WriteLine("_______________________________");
         }
 
         void LogForError(string logMessage, TextWriter txtWriter)
@@ -133,7 +133,7 @@ namespace LogCustom
             txtWriter.WriteLine("(UTC) {0} {1}", DateTime.UtcNow.ToLongTimeString(),
                 DateTime.UtcNow.ToLongDateString());
             txtWriter.WriteLine($"{logMessage}");
-            txtWriter.WriteLine("-------------------------------");
+            txtWriter.WriteLine("_______________________________");
         }
     }
 }
