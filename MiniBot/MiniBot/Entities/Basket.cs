@@ -12,6 +12,8 @@ namespace MiniBot.Entities
     {
         static List<Product> _products = new List<Product>();
 
+        public static readonly int Id = new Random().Next(100_000, 200_000);
+
         public float TotalPrice
         {
             get

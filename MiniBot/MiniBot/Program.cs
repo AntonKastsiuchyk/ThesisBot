@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using MiniBot.Activity;
 using MiniBot.ProductRepositories;
 using LogCustom;
+using static MiniBot.Activity.AssistantBot;
+using System.Net.Mail;
+using System.Net;
 
 namespace MiniBot
 {
@@ -15,19 +18,19 @@ namespace MiniBot
         {
             AssistantBot.Hello();
 
-            Startloop:
+        Startloop:
             int answer = AssistantBot.ShowMenuForUser();
 
             if (answer == 1)
             {
                 AssistantBot.ChoosePizza();
             }
-            if(answer == 2)
+            if (answer == 2)
             {
                 AssistantBot.ChooseDrink();
             }
 
-            if(AssistantBot.ShowBasketOrMenu() == true)
+            if (AssistantBot.ShowBasketOrMenu() == true)
             {
                 goto Startloop;
             }

@@ -7,11 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MiniBot.Extensions;
+using System.Net.Mail;
+using System.Net;
+using System.Threading;
 
 namespace MiniBot.Activity
 {
     sealed class AssistantBot
     {
+        internal enum Rating
+        {
+            Terrible = 0,
+            VeryBad = 1,
+            Bad = 2,
+            SoSo = 3,
+            Good = 4,
+            Amazing = 5
+        }
+
         internal static void Hello()
         {
             Logger.Debug("Greeting. Start debug.");
@@ -200,6 +213,7 @@ namespace MiniBot.Activity
 
         internal static void ActionWithBasket()
         {
+            User.UserEmailContainAdress += User_UserEmailContainAdress;
         Startloop:
             Console.WriteLine("\nPlease choose your next step.\n\t1 - Delete position\n\t2 - Change amount for position" +
                 "\n\t3 - Return to menu\n\t4 - Submit order\n\t5 - Exit");
@@ -306,17 +320,27 @@ namespace MiniBot.Activity
                             Console.WriteLine($"Adress: {user.Adress}");
                             Console.WriteLine($"\n{user.Name}, please check your email {user.Email} and check status of your order.");
                             Console.ResetColor();
+                            GetRating();
+                            Thread.Sleep(5_000);
+                            SendEmailOrderIsOnTheWay(user.Email, user.Name);
+                            Thread.Sleep(5_000);
+                            SendEmailOrderDeliveredAndPaid(user.Email, user.Name);
                         }
                         else
                         {
                             Console.WriteLine();
                             Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine($"\nThank you for your order! \nOrder: ");
+                            Console.WriteLine($"\nThank you for your order! \nOrder №{Basket.Id}: ");
                             order.ShowShortInfo();
                             Console.WriteLine("Total price of your order: {0:0.00}$", order.TotalPrice);
                             Console.WriteLine($"Adress: {user.Adress}");
                             Console.WriteLine($"\n{user.Name}, please check your email {user.Email} and check status of your order.");
                             Console.ResetColor();
+                            GetRating();
+                            Thread.Sleep(5_000);
+                            SendEmailOrderIsOnTheWay(user.Email, user.Name);
+                            Thread.Sleep(5_000);
+                            SendEmailOrderDeliveredAndPaid(user.Email, user.Name);
                         }
                     }
                     else
@@ -329,10 +353,107 @@ namespace MiniBot.Activity
                     break;
                 case 5:
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("\nThanks for your attention! Goodbye! :)");
+                    Console.WriteLine("\nHave a nice day! Goodbye!:)");
                     Console.ResetColor();
                     break;
             }
+        }
+
+        private static void User_UserEmailContainAdress(object sender, Events.UserEmailContainAdressEventArgs user)
+        {
+            AssistantBot assistantBot = new AssistantBot();
+            SendEmailOrderReceive(user.Email, user.Name).GetAwaiter();
+        }
+
+        static void GetRating()
+        {
+            Console.WriteLine("\nPlease rate our service. 0 (terrible) to 5 (amazing).");
+            Rating answer = GetEnumFromConsole();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            switch (answer)
+            {
+                case Rating.Terrible: 
+                case Rating.VeryBad:
+                case Rating.Bad:
+                    Console.WriteLine("\nOh no! IT-Academy Pizza apologize and promise to improve our service! Thanks for your rating! Waiting for you again!");
+                    break;
+                case Rating.SoSo:
+                    Console.WriteLine("\nThanks for your rating! IT-Academy Pizza promise to improve our service! Waiting for you again!");
+                    break;
+                case Rating.Good:
+                case Rating.Amazing:
+                    Console.WriteLine("\nThanks for your rating! Waiting for you again!");
+                    break;
+                default:
+                    Console.WriteLine("\nSorry for wasting your time. Thanks for your attention! Waiting for you again!");
+                    break;
+            }
+            Console.ResetColor();
+        }
+
+        static Rating GetEnumFromConsole()
+        {
+            bool isRating = false;
+            Rating rating = default;
+            Console.ForegroundColor = ConsoleColor.Green;
+            while (!isRating)
+            {
+                if (Enum.TryParse(Console.ReadLine(), out rating))
+                {
+                    isRating = true;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            Console.ResetColor();
+            return rating;
+        }
+
+        static async Task SendEmailOrderReceive(string email, string name)
+        {
+            MailAddress from = new MailAddress("it-academy-minibot@mail.ru", "IT-Academy Pizza");
+            MailAddress to = new MailAddress(email);
+
+            MailMessage message = new MailMessage(from, to);
+            message.Subject = $"Order received";
+            message.Body = $"<h3>Hey {name}, thanks for your order №{Basket.Id}! We’ll let you know when it’s on its way.<h3>";
+            message.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient("smpt.mail.ru", 2525);
+            smtp.Credentials = new NetworkCredential("it-academy-minibot@mail.ru", "OooiaeMFT23^");
+            smtp.EnableSsl = true;
+            await smtp.SendMailAsync(message);
+        }
+
+        static void SendEmailOrderIsOnTheWay(string email, string name)
+        {
+            MailAddress from = new MailAddress("it-academy-minibot@mail.ru", "IT-Academy Pizza");
+            MailAddress to = new MailAddress(email);
+
+            MailMessage message = new MailMessage(from, to);
+            message.Subject = $"Order delivery status - shipped";
+            message.Body = $"<h3>Hey {name}, this is IT-Academy Pizza! Our driver is on the way with your order of №{Basket.Id}. <h3>";
+            message.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient("smpt.mail.ru", 2525);
+            smtp.Credentials = new NetworkCredential("it-academy-minibot@mail.ru", "OooiaeMFT23^");
+            smtp.EnableSsl = true;
+            smtp.Send(message);
+        }
+
+        static void SendEmailOrderDeliveredAndPaid(string email, string name)
+        {
+            MailAddress from = new MailAddress("it-academy-minibot@mail.ru", "IT-Academy Pizza");
+            MailAddress to = new MailAddress(email);
+
+            MailMessage message = new MailMessage(from, to);
+            message.Subject = $"Order delivery status - delivered and paid";
+            message.Body = $"<h3>Hey {name}, your order №{Basket.Id} has delivered and paid. Thank you! Waiting for you again!<h3>";
+            message.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient("smpt.mail.ru", 2525);
+            smtp.Credentials = new NetworkCredential("it-academy-minibot@mail.ru", "OooiaeMFT23^");
+            smtp.EnableSsl = true;
+            smtp.Send(message);
         }
     }
 }

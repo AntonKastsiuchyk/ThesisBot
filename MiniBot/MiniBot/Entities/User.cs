@@ -1,4 +1,5 @@
 ﻿using LogCustom;
+using MiniBot.Events;
 using MiniBot.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace MiniBot.Entities
 {
     [DebuggerDisplay("Name = {Name}; Email = {Email}; Adress = {Adress}")]
-    sealed class User
+    class User
     {
         public string Name { get; set; }
 
@@ -18,9 +19,11 @@ namespace MiniBot.Entities
 
         public string Adress { get; set; }
 
+        public static event EventHandler<UserEmailContainAdressEventArgs> UserEmailContainAdress;
+
         internal string GetName(User user)
         {
-            Console.WriteLine("Please input your name: ");
+            Console.WriteLine("\nPlease input your name: ");
             Console.ForegroundColor = ConsoleColor.Green;
             string name = Console.ReadLine();
             Console.ResetColor();
@@ -30,7 +33,7 @@ namespace MiniBot.Entities
 
         internal string GetAdress(User user)
         {
-            Console.WriteLine("Please input your adress.");
+            Console.WriteLine("\nPlease input your adress.");
 
             Console.WriteLine("City: ");
             Console.ForegroundColor = ConsoleColor.Green;
@@ -59,7 +62,7 @@ namespace MiniBot.Entities
 
         internal string GetEmail(User user)
         {
-            Console.WriteLine("Please input your email (example@example.com): ");
+            Console.WriteLine("\nPlease input your email (example@example.com): ");
         Startloop:
             Console.ForegroundColor = ConsoleColor.Green;
             string email = Console.ReadLine();
@@ -73,7 +76,7 @@ namespace MiniBot.Entities
             {
                 Logger.Error($"{ex.Message}");
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Your email is invalid. Please try again. (example@example.com)");
+                Console.WriteLine("\nYour email is invalid. Please try again. (example@example.com)");
                 Console.ResetColor();
                 goto Startloop;
             }
@@ -81,12 +84,13 @@ namespace MiniBot.Entities
             {
                 Logger.Error($"{ex.Message}");
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Your email is invalid. Please try again. (example@example.com)");
+                Console.WriteLine("\nYour email is invalid. Please try again. (example@example.com)");
                 Console.ResetColor();
                 goto Startloop;
             }
 
             user.Email = email;
+            OnUserEmailContainAdress(new UserEmailContainAdressEventArgs(Email, Name));
             return user.Email;
         }
 
@@ -118,6 +122,11 @@ namespace MiniBot.Entities
             {
                 throw new EmailMessageException($"Email is invalid: {email}.");
             }
+        }
+
+        protected virtual void OnUserEmailContainAdress(UserEmailContainAdressEventArgs eventArgs)
+        {
+            UserEmailContainAdress?.Invoke(this, eventArgs);
         }
     }
 }

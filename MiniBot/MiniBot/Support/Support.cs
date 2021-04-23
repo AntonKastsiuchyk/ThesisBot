@@ -23,7 +23,7 @@ namespace MiniBot.Support
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Incorrect value. Please input integer value.");
+                    Console.WriteLine("\nIncorrect value. Please input integer value.");
                     Console.ResetColor();
                 }
             }
