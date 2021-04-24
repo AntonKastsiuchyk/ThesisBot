@@ -23,6 +23,7 @@ namespace MiniBot.Entities
 
         internal string GetName(User user)
         {
+            Logger.Debug("Get name of user.");
             Console.WriteLine("\nPlease input your name: ");
             Console.ForegroundColor = ConsoleColor.Green;
             string name = Console.ReadLine();
@@ -33,6 +34,7 @@ namespace MiniBot.Entities
 
         internal string GetAdress(User user)
         {
+            Logger.Debug("Get adress of user.");
             Console.WriteLine("\nPlease input your adress.");
 
             Console.WriteLine("City: ");
@@ -62,6 +64,7 @@ namespace MiniBot.Entities
 
         internal string GetEmail(User user)
         {
+            Logger.Debug("Get Email of user.");
             Console.WriteLine("\nPlease input your email (example@example.com): ");
         Startloop:
             Console.ForegroundColor = ConsoleColor.Green;
@@ -96,6 +99,7 @@ namespace MiniBot.Entities
 
         internal static void CheckEmail(string email)
         {
+            Logger.Debug("Check Email of user.");
             if (string.IsNullOrWhiteSpace(email))
             {
                 throw new EmailMessageException($"Email is empty.");

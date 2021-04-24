@@ -1,4 +1,5 @@
-﻿using MiniBot.Entities;
+﻿using LogCustom;
+using MiniBot.Entities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace MiniBot.ProductRepositories
 
         public IEnumerable<Drink> GetProducts()
         {
+            Logger.Debug("Get drinks from Json and show them to user.");
             ProductViewModel product = JsonConvert.DeserializeObject<ProductViewModel>
                 (File.ReadAllText
                 (@"C:\Users\user\source\repos\AntonKastsiuchyk\ITAcademy.MiniBot\MiniBot\MiniBot\bin\Debug\net5.0\JsonBase\ProductViewModel.json"));

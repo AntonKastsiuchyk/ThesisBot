@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LogCustom;
 
 namespace MiniBot.ProductRepositories
 {
@@ -15,6 +16,7 @@ namespace MiniBot.ProductRepositories
 
         public IEnumerable<Pizza> GetProducts()
         {
+            Logger.Debug("Get pizzas from Json and show them to user.");
             ProductViewModel product = JsonConvert.DeserializeObject<ProductViewModel>
                 (File.ReadAllText
                 (@"C:\Users\user\source\repos\AntonKastsiuchyk\ITAcademy.MiniBot\MiniBot\MiniBot\bin\Debug\net5.0\JsonBase\ProductViewModel.json"));

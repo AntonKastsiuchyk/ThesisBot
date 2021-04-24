@@ -27,7 +27,7 @@ namespace MiniBot.Activity
 
         internal static void Hello()
         {
-            Logger.Debug("Greeting. Start debug.");
+            Logger.Debug("Greeting.");
             switch (true)
             {
                 case bool morning when morning = DateTime.Now.Hour >= 8 && DateTime.Now.Hour < 12:
@@ -50,6 +50,7 @@ namespace MiniBot.Activity
 
         internal static int ShowProductsFromMenu()
         {
+            Logger.Debug("Show pizzas or drinks to user.");
         Startloop:
             Console.ForegroundColor = ConsoleColor.Green;
             int answer = Support.Support.GetIntFromConsole();
@@ -73,15 +74,16 @@ namespace MiniBot.Activity
                     break;
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nPlease input correct answer. (1 or 2)");
+                    Console.WriteLine("\nPlease input correct answer. Please try again. (1 or 2)");
                     Console.ResetColor();
                     goto Startloop;
             }
             return answer;
         }
 
-        internal static int ShowMenuForUser()
+        internal static int ShowMenuToUser()
         {
+            Logger.Debug("Show menu to user.");
             Console.WriteLine("\nPlease choose position from our menu, what you want to see. \n\tMenu:");
             Console.WriteLine($"\t1 - Pizzas\n\t2 - Drinks\n\t3 - Exit");
             return ShowProductsFromMenu();
@@ -90,8 +92,10 @@ namespace MiniBot.Activity
         internal static void ChoosePizza()
         {
         Startloop:
+            Logger.Debug("User choose pizza from list.");
             Console.WriteLine("\nPlease input № of product to add this product to basket." +
                 "\nTo exit please input - 0.");
+
             Console.ForegroundColor = ConsoleColor.Green;
             int answerId = Support.Support.GetIntFromConsole();
             Console.ResetColor();
@@ -101,9 +105,10 @@ namespace MiniBot.Activity
                 Basket basket = new Basket();
                 basket.AddById(answerId);
 
-            LoopForChoise:
-                Console.WriteLine("\nAre you want add something to your basket from this list of menu? " +
+                Console.WriteLine($"\nExcellent! Product №{answerId} in your basket!" +
+                    $"\nAre you want to add something to your basket from this list of menu?" +
                     "\nFor \"yes\" please input - 1\nFor \"no\" please input - 0");
+            LoopForChoise:
                 Console.ForegroundColor = ConsoleColor.Green;
                 int answerChoice = Support.Support.GetIntFromConsole();
                 Console.ResetColor();
@@ -119,7 +124,7 @@ namespace MiniBot.Activity
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nPlease input correct answer. (1 or 0)");
+                    Console.WriteLine("\nPlease input correct answer. Please try again. (1 or 0)");
                     Console.ResetColor();
                     goto LoopForChoise;
                 }
@@ -140,8 +145,10 @@ namespace MiniBot.Activity
         internal static void ChooseDrink()
         {
         Startloop:
+            Logger.Debug("User choose drink from list.");
             Console.WriteLine("\nPlease input № of product to add this product to basket." +
                 "\nTo exit please input - 0.");
+
             Console.ForegroundColor = ConsoleColor.Green;
             int answerId = Support.Support.GetIntFromConsole();
             Console.ResetColor();
@@ -151,9 +158,10 @@ namespace MiniBot.Activity
                 Basket basket = new Basket();
                 basket.AddById(answerId);
 
-            LoopForChoise:
-                Console.WriteLine("\nAre you want add something to your basket from this list of menu? " +
+                Console.WriteLine($"\nExcellent! Product №{answerId} in your basket!" +
+                    $"\nAre you want to add something to your basket from this list of menu?" +
                     "\nFor \"yes\" please input - 1\nFor \"no\" please input - 0");
+            LoopForChoise:
                 Console.ForegroundColor = ConsoleColor.Green;
                 int answerChoice = Support.Support.GetIntFromConsole();
                 Console.ResetColor();
@@ -169,7 +177,7 @@ namespace MiniBot.Activity
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nPlease input correct answer. (1 or 0)");
+                    Console.WriteLine("\nPlease input correct answer. Please try again. (1 or 0)");
                     Console.ResetColor();
                     goto LoopForChoise;
                 }
@@ -189,9 +197,11 @@ namespace MiniBot.Activity
 
         internal static bool ShowBasketOrMenu()
         {
+            Logger.Debug("User decide what he want to see: menu or basket.");
             bool isMenu = false;
+            Console.WriteLine("\nAre you want to see your basket or want to see our menu? (1 or 2)");
+
         Startloop:
-            Console.WriteLine("\nAre you want to go to your basket or want to see our menu? (1 or 2)");
             int answer = Support.Support.GetIntFromConsole();
 
             if (answer == 1)
@@ -205,7 +215,9 @@ namespace MiniBot.Activity
             }
             else
             {
-                Console.WriteLine("\nPlease input correct answer. (1 or 2)");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nPlease input correct answer. Please try again. (1 or 2)");
+                Console.ResetColor();
                 goto Startloop;
             }
             return isMenu;
@@ -213,6 +225,7 @@ namespace MiniBot.Activity
 
         internal static void ActionWithBasket()
         {
+            Logger.Debug("User decide what he want to do with his basket.");
             User.UserEmailContainAdress += User_UserEmailContainAdress;
         Startloop:
             Console.WriteLine("\nPlease choose your next step.\n\t1 - Delete position\n\t2 - Change amount for position" +
@@ -224,22 +237,26 @@ namespace MiniBot.Activity
             switch (answer)
             {
                 case 1:
+                    Logger.Debug("User delete position from basket by Id of product.");
                     if (!Basket.CheckForEmpty())
                     {
-                    StartloopForCase1:
                         Console.WriteLine("\nPlease input № of product: ");
+                    StartloopForCase1:
                         Console.ForegroundColor = ConsoleColor.Green;
                         int idOfProductForDelete = Support.Support.GetIntFromConsole();
                         Console.ResetColor();
 
-                        if (idOfProductForDelete >= 1 && idOfProductForDelete <= 39)
+                        if (Basket.CheckProductAvailability(idOfProductForDelete) 
+                            && idOfProductForDelete >= 1 && idOfProductForDelete <= 39)
                         {
                             Basket basket = new Basket();
                             basket.DeleteById(idOfProductForDelete);
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("\nPlease input correct № of product. Please try again.");
+                            Console.ResetColor();
                             goto StartloopForCase1;
                         }
                         Basket newBasket = new Basket();
@@ -253,14 +270,17 @@ namespace MiniBot.Activity
                     }
                     goto Startloop;
                 case 2:
-                StartloopForCase2:
+                    Logger.Debug("User change amount of product by Id in his basket.");
                     if (!Basket.CheckForEmpty())
                     {
                         Console.WriteLine("\nPlease input № of product: ");
+                    StartloopForCase2:
                         Console.ForegroundColor = ConsoleColor.Green;
                         int idOfProductForUpdate = Support.Support.GetIntFromConsole();
                         Console.ResetColor();
-                        if (idOfProductForUpdate >= 1 && idOfProductForUpdate <= 39)
+                        
+                        if (Basket.CheckProductAvailability(idOfProductForUpdate) 
+                            && idOfProductForUpdate >= 1 && idOfProductForUpdate <= 39)
                         {
                             Console.WriteLine("\nPlease input amount:");
                             Console.ForegroundColor = ConsoleColor.Green;
@@ -271,7 +291,9 @@ namespace MiniBot.Activity
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("\nPlease input correct № of product. Please try again.");
+                            Console.ResetColor();
                             goto StartloopForCase2;
                         }
                         Basket updateBasket = new Basket();
@@ -285,8 +307,9 @@ namespace MiniBot.Activity
                     }
                     goto Startloop;
                 case 3:
+                    Logger.Debug("User decide to see menu again.");
                 StartloopForCase3:
-                    int answerForThisCase = ShowMenuForUser();
+                    int answerForThisCase = ShowMenuToUser();
                     if (answerForThisCase == 1)
                     {
                         ChoosePizza();
@@ -301,6 +324,7 @@ namespace MiniBot.Activity
                     }
                     goto Startloop;
                 case 4:
+                    Logger.Debug("User decide to submit order.");
                     if (!Basket.CheckForEmpty())
                     {
                         User user = new User();
@@ -323,8 +347,10 @@ namespace MiniBot.Activity
                             GetRating();
                             Thread.Sleep(5_000);
                             SendEmailOrderIsOnTheWay(user.Email, user.Name);
+                            Logger.Debug("Send second Email");
                             Thread.Sleep(5_000);
                             SendEmailOrderDeliveredAndPaid(user.Email, user.Name);
+                            Logger.Debug("Send final Email");
                         }
                         else
                         {
@@ -339,8 +365,10 @@ namespace MiniBot.Activity
                             GetRating();
                             Thread.Sleep(5_000);
                             SendEmailOrderIsOnTheWay(user.Email, user.Name);
+                            Logger.Debug("Send second Email");
                             Thread.Sleep(5_000);
                             SendEmailOrderDeliveredAndPaid(user.Email, user.Name);
+                            Logger.Debug("Send final Email");
                         }
                     }
                     else
@@ -352,6 +380,8 @@ namespace MiniBot.Activity
                     }
                     break;
                 case 5:
+                    Logger.Debug("User decide to exit from solution.");
+                    GetRating();
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("\nHave a nice day! Goodbye!:)");
                     Console.ResetColor();
@@ -361,18 +391,30 @@ namespace MiniBot.Activity
 
         private static void User_UserEmailContainAdress(object sender, Events.UserEmailContainAdressEventArgs user)
         {
-            AssistantBot assistantBot = new AssistantBot();
-            SendEmailOrderReceive(user.Email, user.Name).GetAwaiter();
+            Logger.Debug("Start event. Send first Email");
+            try
+            {
+                SendEmailOrderReceive(user.Email, user.Name).GetAwaiter();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("First Email canceled." + ex.Message);
+            }
         }
 
         static void GetRating()
         {
+            Logger.Debug("Get rating of service.");
             Console.WriteLine("\nPlease rate our service. 0 (terrible) to 5 (amazing).");
+
+            Console.ForegroundColor = ConsoleColor.Green;
             Rating answer = GetEnumFromConsole();
+            Console.ResetColor();
+
             Console.ForegroundColor = ConsoleColor.Blue;
             switch (answer)
             {
-                case Rating.Terrible: 
+                case Rating.Terrible:
                 case Rating.VeryBad:
                 case Rating.Bad:
                     Console.WriteLine("\nOh no! IT-Academy Pizza apologize and promise to improve our service! Thanks for your rating! Waiting for you again!");
@@ -413,6 +455,7 @@ namespace MiniBot.Activity
 
         static async Task SendEmailOrderReceive(string email, string name)
         {
+            Logger.Info("Get information of first Email.");
             MailAddress from = new MailAddress("it-academy-minibot@mail.ru", "IT-Academy Pizza");
             MailAddress to = new MailAddress(email);
 
@@ -428,6 +471,7 @@ namespace MiniBot.Activity
 
         static void SendEmailOrderIsOnTheWay(string email, string name)
         {
+            Logger.Info("Get information of second Email.");
             MailAddress from = new MailAddress("it-academy-minibot@mail.ru", "IT-Academy Pizza");
             MailAddress to = new MailAddress(email);
 
@@ -443,6 +487,7 @@ namespace MiniBot.Activity
 
         static void SendEmailOrderDeliveredAndPaid(string email, string name)
         {
+            Logger.Info("Get information of final Email.");
             MailAddress from = new MailAddress("it-academy-minibot@mail.ru", "IT-Academy Pizza");
             MailAddress to = new MailAddress(email);
 

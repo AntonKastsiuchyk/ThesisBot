@@ -16,10 +16,11 @@ namespace MiniBot
     {
         static void Main(string[] args)
         {
+            Logger.Debug("Start debug.");
             AssistantBot.Hello();
 
         Startloop:
-            int answer = AssistantBot.ShowMenuForUser();
+            int answer = AssistantBot.ShowMenuToUser();
 
             if (answer == 1)
             {
@@ -36,6 +37,7 @@ namespace MiniBot
             }
 
             AssistantBot.ActionWithBasket();
+            Logger.Debug("Solution сompleted successfully.");
         }
     }
 }
