@@ -13,7 +13,7 @@ namespace MiniBot.Entities
     {
         static List<Product> _products = new List<Product>();
 
-        public static readonly int Id = new Random().Next(100_000, 200_000);
+        public static int Id = new Random().Next(100_000, 200_000);
 
         public float TotalPrice
         {
@@ -37,33 +37,31 @@ namespace MiniBot.Entities
 
             if (id >= 1 && id <= 30)
             {
-                foreach (var pizza in products.Pizzas)
+                Product pizza = products.Pizzas.Where(i => id == i.Id).FirstOrDefault();
+
+                if (!CheckReplicant(id))
                 {
-                    if (id == pizza.Id)
-                    {
-                        if (CheckReplicant(id) == false)
-                        {
-                            _products.Add(pizza);
-                            return;
-                        }
-                        return;
-                    }
+                    _products.Add(pizza);
+                    return;
+                }
+                else
+                {
+                    return;
                 }
             }
 
             if (id >= 31 && id <= 39)
             {
-                foreach (var drink in products.Drinks)
+                Product drink = products.Drinks.Where(i => id == i.Id).FirstOrDefault();
+
+                if (!CheckReplicant(id))
                 {
-                    if (id == drink.Id)
-                    {
-                        if (CheckReplicant(id) == false)
-                        {
-                            _products.Add(drink);
-                            return;
-                        }
-                        return;
-                    }
+                    _products.Add(drink);
+                    return;
+                }
+                else
+                {
+                    return;
                 }
             }
         }
@@ -138,6 +136,12 @@ namespace MiniBot.Entities
             {
                 Console.WriteLine($"{i + 1}. {_products[i].Name} - {_products[i].Amount} pc.");
             }
+        }
+
+        internal void Reset()
+        {
+            _products.Clear();
+            Id = new Random().Next(100_000, 200_000);
         }
 
         internal static bool CheckForEmpty()

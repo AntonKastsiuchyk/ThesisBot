@@ -17,16 +17,16 @@ namespace MiniBot.ProductRepositories
         public IEnumerable<Drink> GetProducts()
         {
             Logger.Debug("Get drinks from Json and show them to user.");
-            ProductViewModel product = JsonConvert.DeserializeObject<ProductViewModel>
+            ProductViewModel products = JsonConvert.DeserializeObject<ProductViewModel>
                 (File.ReadAllText
                 (@"C:\Users\user\source\repos\AntonKastsiuchyk\ITAcademy.MiniBot\MiniBot\MiniBot\bin\Debug\net5.0\JsonBase\ProductViewModel.json"));
 
             Console.WriteLine();
-            foreach (Drink item in product.Drinks)
+            foreach (Drink item in products.Drinks)
             {
                 Console.WriteLine(item.ToString());
             }
-            _drinks = product.Drinks;
+            _drinks = products.Drinks;
             return _drinks;
         }
     }

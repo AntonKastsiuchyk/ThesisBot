@@ -19,22 +19,20 @@ namespace MiniBot.Entities
 
         public string Adress { get; set; }
 
-        public static event EventHandler<UserEmailContainAdressEventArgs> UserEmailContainAdress;
+        public event EventHandler<UserEmailContainAdressEventArgs> UserEmailContainAdress;
 
-        internal string GetName(User user)
+        string GetName()
         {
-            Logger.Debug("Get name of user.");
             Console.WriteLine("\nPlease input your name: ");
             Console.ForegroundColor = ConsoleColor.Green;
             string name = Console.ReadLine();
             Console.ResetColor();
 
-            return user.Name = name;
+            return Name = name;
         }
 
-        internal string GetAdress(User user)
+        string GetAdress()
         {
-            Logger.Debug("Get adress of user.");
             Console.WriteLine("\nPlease input your adress.");
 
             Console.WriteLine("City: ");
@@ -57,14 +55,13 @@ namespace MiniBot.Entities
             var numberOfFlat = Support.Support.GetIntFromConsole();
             Console.ResetColor();
 
-            user.Adress = $"{city}, {street}, {numberOfHouse} - {numberOfFlat}";
+            Adress = $"{city}, {street}, {numberOfHouse} - {numberOfFlat}";
 
-            return user.Adress;
+            return Adress;
         }
 
-        internal string GetEmail(User user)
+        string GetEmail()
         {
-            Logger.Debug("Get Email of user.");
             Console.WriteLine("\nPlease input your email (example@example.com): ");
         Startloop:
             Console.ForegroundColor = ConsoleColor.Green;
@@ -92,12 +89,20 @@ namespace MiniBot.Entities
                 goto Startloop;
             }
 
-            user.Email = email;
-            OnUserEmailContainAdress(new UserEmailContainAdressEventArgs(Email, Name));
-            return user.Email;
+            Email = email; 
+            return Email;
         }
 
-        internal static void CheckEmail(string email)
+        internal void GetInfoOfUser()
+        {
+            Logger.Debug("Get all info of user.");
+            GetName();
+            GetAdress();
+            GetEmail();
+            OnUserEmailContainAdress(new UserEmailContainAdressEventArgs(Email, Name));
+        }
+
+        static void CheckEmail(string email)
         {
             Logger.Debug("Check Email of user.");
             if (string.IsNullOrWhiteSpace(email))
