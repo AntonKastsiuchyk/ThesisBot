@@ -12,6 +12,9 @@ namespace MiniBot.Activity
 {
     sealed class AssistantBot
     {
+        Basket _basket = new Basket();
+        User _user = new User();
+
         internal enum Rating
         {
             Terrible = 0,
@@ -23,7 +26,7 @@ namespace MiniBot.Activity
         }
 
         #region Methods
-        internal void Hello()
+        internal static void Hello()
         {
             Logger.Debug("Greeting.");
             switch (true)
@@ -44,6 +47,14 @@ namespace MiniBot.Activity
                     Console.WriteLine("Hello! Welcome to IT-Academy Pizza!");
                     break;
             }
+        }
+
+        internal int ShowMenuToUser()
+        {
+            Logger.Debug("Show menu to user.");
+            Console.WriteLine("\nPlease choose position from our menu, what you want to see. \n\tMenu:");
+            Console.WriteLine($"\t1 - Pizzas\n\t2 - Drinks");
+            return ShowProductsFromMenu();
         }
 
         static int ShowProductsFromMenu()
@@ -73,19 +84,11 @@ namespace MiniBot.Activity
             return answer;
         }
 
-        internal int ShowMenuToUser()
-        {
-            Logger.Debug("Show menu to user.");
-            Console.WriteLine("\nPlease choose position from our menu, what you want to see. \n\tMenu:");
-            Console.WriteLine($"\t1 - Pizzas\n\t2 - Drinks");
-            return ShowProductsFromMenu();
-        }
-
         internal void ChoosePizza()
         {
         Startloop:
             Logger.Debug("User choose pizza from list.");
-            Console.WriteLine("\nPlease input № of product to add this product to basket." +
+            Console.WriteLine("Please input № of product to add this product to basket." +
                 "\nTo exit please input - 0.");
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -94,27 +97,10 @@ namespace MiniBot.Activity
 
             if (answerId >= 1 && answerId <= 30)
             {
-                Basket basket = new Basket();
-                basket.AddById(answerId);
-
-                Console.WriteLine($"\nExcellent! Product №{answerId} in your basket!" +
-                    $"\nAre you want to add something to your basket from this list of menu?" +
-                    "\nFor \"yes\" please input - 1\nFor \"no\" please input - 0");
-            LoopForChoise:
-                Console.ForegroundColor = ConsoleColor.Green;
-                int answerChoice = Support.Support.GetIntFromConsole();
-                Console.ResetColor();
-                switch (answerChoice)
+                _basket.AddById(answerId);
+                if (AddNewProductFromSameList(answerId))
                 {
-                    case 0:
-                        return;
-                    case 1:
-                        goto Startloop;
-                    default:
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\nPlease input correct answer. Please try again. (1 or 0)");
-                        Console.ResetColor();
-                        goto LoopForChoise;
+                    goto Startloop;
                 }
             }
             else if (answerId == 0)
@@ -134,7 +120,7 @@ namespace MiniBot.Activity
         {
         Startloop:
             Logger.Debug("User choose drink from list.");
-            Console.WriteLine("\nPlease input № of product to add this product to basket." +
+            Console.WriteLine("Please input № of product to add this product to basket." +
                 "\nTo exit please input - 0.");
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -143,27 +129,10 @@ namespace MiniBot.Activity
 
             if (answerId >= 31 && answerId <= 39)
             {
-                Basket basket = new Basket();
-                basket.AddById(answerId);
-
-                Console.WriteLine($"\nExcellent! Product №{answerId} in your basket!" +
-                    $"\nAre you want to add something to your basket from this list of menu?" +
-                    "\nFor \"yes\" please input - 1\nFor \"no\" please input - 0");
-            LoopForChoise:
-                Console.ForegroundColor = ConsoleColor.Green;
-                int answerChoice = Support.Support.GetIntFromConsole();
-                Console.ResetColor();
-                switch (answerChoice)
+                _basket.AddById(answerId);
+                if (AddNewProductFromSameList(answerId))
                 {
-                    case 0:
-                        return;
-                    case 1:
-                        goto Startloop;
-                    default:
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\nPlease input correct answer. Please try again. (1 or 0)");
-                        Console.ResetColor();
-                        goto LoopForChoise;
+                    goto Startloop;
                 }
             }
             else if (answerId == 0)
@@ -179,6 +148,33 @@ namespace MiniBot.Activity
             }
         }
 
+        bool AddNewProductFromSameList(int answerId)
+        {
+            bool isSomethingElse = false;
+            Console.WriteLine($"\nExcellent! Product №{answerId} in your basket!" +
+                    $"\nAre you want to add something to your basket from this list of menu?" +
+                    "\nFor \"yes\" please input - 1\nFor \"no\" please input - 0");
+        LoopForChoise:
+            Console.ForegroundColor = ConsoleColor.Green;
+            int answerChoice = Support.Support.GetIntFromConsole();
+            Console.WriteLine();
+            Console.ResetColor();
+            switch (answerChoice)
+            {
+                case 0:
+                    break;
+                case 1:
+                    isSomethingElse = true;
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nPlease input correct answer. Please try again. (1 or 0)");
+                    Console.ResetColor();
+                    goto LoopForChoise;
+            }
+            return isSomethingElse;
+        }
+
         internal bool ShowBasketOrMenu()
         {
             Logger.Debug("User decide what he want to see: menu or basket.");
@@ -190,8 +186,7 @@ namespace MiniBot.Activity
             switch (answer)
             {
                 case 1:
-                    Basket basket = new Basket();
-                    basket.GetProducts();
+                    _basket.GetProducts();
                     break;
                 case 0:
                     isMenu = true;
@@ -271,8 +266,7 @@ namespace MiniBot.Activity
                 if (Basket.CheckProductAvailability(idOfProductForDelete)
                     && idOfProductForDelete >= 1 && idOfProductForDelete <= 39)
                 {
-                    Basket basket = new Basket();
-                    basket.DeleteById(idOfProductForDelete);
+                    _basket.DeleteById(idOfProductForDelete);
                 }
                 else
                 {
@@ -281,8 +275,7 @@ namespace MiniBot.Activity
                     Console.ResetColor();
                     goto Startloop;
                 }
-                Basket newBasket = new Basket();
-                newBasket.GetProducts();
+                _basket.GetProducts();
             }
             else
             {
@@ -306,13 +299,11 @@ namespace MiniBot.Activity
                 switch (answer)
                 {
                     case 1:
-                        Basket newBasket = new Basket();
-                        newBasket.Reset();
-                        newBasket.GetProducts();
+                        _basket.Reset();
+                        _basket.GetProducts();
                         break;
                     case 0:
-                        Basket oldBasket = new Basket();
-                        oldBasket.GetProducts();
+                        _basket.GetProducts();
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -347,8 +338,14 @@ namespace MiniBot.Activity
                     Console.ForegroundColor = ConsoleColor.Green;
                     int amountOfUser = Support.Support.GetIntFromConsole();
                     Console.ResetColor();
-                    Basket basket = new Basket();
-                    basket.UpdateById(idOfProductForUpdate, amountOfUser);
+                    if (amountOfUser == 0)
+                    {
+                        _basket.DeleteById(idOfProductForUpdate);
+                    }
+                    else
+                    {
+                        _basket.UpdateById(idOfProductForUpdate, amountOfUser);
+                    }
                 }
                 else
                 {
@@ -357,8 +354,7 @@ namespace MiniBot.Activity
                     Console.ResetColor();
                     goto Startloop;
                 }
-                Basket updateBasket = new Basket();
-                updateBasket.GetProducts();
+                _basket.GetProducts();
             }
             else
             {
@@ -371,49 +367,47 @@ namespace MiniBot.Activity
         void SubmitOrder()
         {
             Logger.Debug("User decide to submit order.");
-            User user = new User();
-            user.UserEmailContainAdress += User_UserEmailContainAdress;
-            user.GetInfoOfUser();
+            _user.UserEmailContainAdress += User_UserEmailContainAdress;
+            _user.GetInfoOfUser();
 
-            Basket order = new Basket();
-            if (order.TotalPrice > 20)
+            if (_basket.TotalPrice > 20)
             {
-                float discountOrder = order.AddDiscount(order);
+                float discountOrder = _basket.AddDiscount(_basket);
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"\nThank you for your order! \nOrder: ");
-                order.ShowShortInfo();
+                _basket.ShowShortInfo();
                 Console.WriteLine("\nTotal price of your order: {0:0.00}$", discountOrder);
-                Console.WriteLine($"Adress: {user.Adress}");
-                Console.WriteLine($"\n{user.Name}, please check your email {user.Email} and check status of your order.");
+                Console.WriteLine($"Adress: {_user.Adress}");
+                Console.WriteLine($"\n{_user.Name}, please check your email {_user.Email} and check status of your order.");
                 Console.ResetColor();
                 GetRating();
 
                 Thread.Sleep(3_000);
                 Logger.Debug("Send second Email");
-                SendEmailOrderIsOnTheWay(user.Email, user.Name);
+                SendEmailOrderIsOnTheWay(_user.Email, _user.Name);
                 Thread.Sleep(3_000);
                 Logger.Debug("Send final Email");
-                SendEmailOrderDelivered(user.Email, user.Name);
+                SendEmailOrderDelivered(_user.Email, _user.Name);
             }
             else
             {
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"\nThank you for your order! \nOrder №{Basket.Id}: ");
-                order.ShowShortInfo();
-                Console.WriteLine("Total price of your order: {0:0.00}$", order.TotalPrice);
-                Console.WriteLine($"Adress: {user.Adress}");
-                Console.WriteLine($"\n{user.Name}, please check your email {user.Email} and check status of your order.");
+                _basket.ShowShortInfo();
+                Console.WriteLine("Total price of your order: {0:0.00}$", _basket.TotalPrice);
+                Console.WriteLine($"Adress: {_user.Adress}");
+                Console.WriteLine($"\n{_user.Name}, please check your email {_user.Email} and check status of your order.");
                 Console.ResetColor();
                 GetRating();
 
                 Thread.Sleep(3_000);
                 Logger.Debug("Send second Email");
-                SendEmailOrderIsOnTheWay(user.Email, user.Name);
+                SendEmailOrderIsOnTheWay(_user.Email, _user.Name);
                 Thread.Sleep(3_000);
                 Logger.Debug("Send final Email");
-                SendEmailOrderDelivered(user.Email, user.Name);
+                SendEmailOrderDelivered(_user.Email, _user.Name);
             }
         }
 
@@ -576,9 +570,8 @@ namespace MiniBot.Activity
             switch (answer)
             {
                 case 1:
+                    _basket.Reset();
                     isNewOrder = true;
-                    Basket newBasket = new Basket();
-                    newBasket.Reset();
                     break;
                 case 0:
                     Console.ForegroundColor = ConsoleColor.Blue;

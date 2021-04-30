@@ -17,22 +17,9 @@ namespace MiniBot.Entities
         public string Description { get; set; }
         public int Amount { get; set; }
 
-        public Product(string name, int id, float cost, string description, int amount)
-        {
-            Name = name;
-            Id = id;
-            Cost = cost;
-            Description = description;
-            Amount = amount;
-        }
-
         public string ShowInfo()
         {
-            return $"\n\t№ {Id}. {Name}. Cost {Cost}$. {Amount} pc.";
-        }
-
-        public Product()
-        {
+            return $"\n\t№ {Id}. {Name}. Cost: {Cost}$. {Amount} pc.";
         }
     }
 }

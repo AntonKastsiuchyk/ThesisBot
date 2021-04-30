@@ -85,7 +85,7 @@ namespace MiniBot.Entities
                 {
                     Console.WriteLine(product.ShowInfo());
                 }
-                Console.WriteLine("\nTotal price of your order: {0:0.00}$", TotalPrice);
+                Console.WriteLine("\n\tTotal price of your order: {0:0.00}$", TotalPrice);
             }
             else
             {

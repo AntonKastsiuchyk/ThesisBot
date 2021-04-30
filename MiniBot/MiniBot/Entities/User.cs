@@ -27,7 +27,6 @@ namespace MiniBot.Entities
             Console.ForegroundColor = ConsoleColor.Green;
             string name = Console.ReadLine();
             Console.ResetColor();
-
             return Name = name;
         }
 
@@ -56,7 +55,6 @@ namespace MiniBot.Entities
             Console.ResetColor();
 
             Adress = $"{city}, {street}, {numberOfHouse} - {numberOfFlat}";
-
             return Adress;
         }
 

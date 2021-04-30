@@ -16,10 +16,10 @@ namespace MiniBot
         static void Main(string[] args)
         {
             Logger.Debug("Start debug.");
-            AssistantBot assistant = new AssistantBot();
-            assistant.Hello();
+            AssistantBot.Hello();
 
         Startloop:
+            AssistantBot assistant = new AssistantBot();
             int answer = assistant.ShowMenuToUser();
 
             switch (answer)
@@ -41,6 +41,7 @@ namespace MiniBot
 
             if (assistant.GetNewOrder())
             {
+                assistant = null;
                 goto Startloop;
             }
 

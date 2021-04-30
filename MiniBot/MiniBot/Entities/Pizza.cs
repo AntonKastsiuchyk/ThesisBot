@@ -13,19 +13,9 @@ namespace MiniBot.Entities
 
         public int Weight { get; set; }
 
-        public Pizza(string name, int id, float cost, string description, int amount, int size, int weight)
-        {
-            Size = size;
-            Weight = weight;
-        }
-
         public override string ToString()
         {
-            return $"№ {Id}. {Name} \nCost {Cost}$ | Size {Size}cm | Weight {Weight}gms \n{Description}\n";
-        }
-
-        public Pizza()
-        {
+            return string.Format("№ {0}. {1} \nCost {2:0.00}$ | Size {3}cm | Weight {4}gms \n{5}\n", Id, Name, Cost, Size, Weight, Description);
         }
     }
 }
