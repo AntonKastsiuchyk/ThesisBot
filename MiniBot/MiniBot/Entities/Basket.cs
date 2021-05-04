@@ -11,7 +11,7 @@ namespace MiniBot.Entities
 {
     sealed class Basket
     {
-        static List<Product> _products = new List<Product>();
+        static IList<Product> _products = new List<Product>();
 
         public static int Id = new Random().Next(100_000, 200_000);
 
@@ -80,7 +80,7 @@ namespace MiniBot.Entities
             if (!CheckForEmpty())
             {
                 Console.WriteLine("\nBASKET:");
-                List<Product> sortedList = _products.OrderBy(i => i.Id).ToList();
+                IList<Product> sortedList = _products.OrderBy(i => i.Id).ToList();
                 foreach (var product in sortedList)
                 {
                     Console.WriteLine(product.ShowInfo());

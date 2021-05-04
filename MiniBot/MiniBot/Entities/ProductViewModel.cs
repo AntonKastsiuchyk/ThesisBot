@@ -10,7 +10,7 @@ namespace MiniBot.Entities
 {
     sealed class ProductViewModel
     {
-        public List<Pizza> Pizzas { get; set; }
-        public List<Drink> Drinks { get; set; }
+        public IList<Pizza> Pizzas { get; set; }
+        public IList<Drink> Drinks { get; set; }
     }
 }

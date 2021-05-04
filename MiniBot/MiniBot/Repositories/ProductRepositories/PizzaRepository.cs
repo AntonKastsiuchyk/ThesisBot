@@ -12,7 +12,7 @@ namespace MiniBot.ProductRepositories
 {
     class PizzaRepository : IProductRepository<Pizza>
     {
-        static List<Pizza> _pizzas = new List<Pizza>();
+        static IList<Pizza> _pizzas = new List<Pizza>();
 
         public IEnumerable<Pizza> GetProducts()
         {

@@ -25,7 +25,7 @@ namespace MiniBot.Entities
         {
             Console.WriteLine("\nPlease input your name: ");
             Console.ForegroundColor = ConsoleColor.Green;
-            string name = Console.ReadLine();
+            string name = Support.Support.CheckStringForEmpty();
             Console.ResetColor();
             return Name = name;
         }
@@ -35,19 +35,13 @@ namespace MiniBot.Entities
             Console.WriteLine("\nPlease input your adress.");
 
             Console.WriteLine("City: ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            string city = Console.ReadLine();
-            Console.ResetColor();
+            string city = Support.Support.CheckStringForEmpty();
 
             Console.WriteLine("Street: ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            string street = Console.ReadLine();
-            Console.ResetColor();
+            string street = Support.Support.CheckStringForEmpty();
 
             Console.WriteLine("House number: ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            string numberOfHouse = Console.ReadLine();
-            Console.ResetColor();
+            string numberOfHouse = Support.Support.CheckStringForEmpty();
 
             Console.WriteLine("Flat number: ");
             Console.ForegroundColor = ConsoleColor.Green;

@@ -29,5 +29,29 @@ namespace MiniBot.Support
             }
             return result;
         }
+
+        public static string CheckStringForEmpty()
+        {
+            bool isEmpty = false;
+            string resultString = default;
+            while (!isEmpty)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                string answer = Console.ReadLine();
+                Console.ResetColor();
+                if (!string.IsNullOrEmpty(answer))
+                {
+                    resultString = answer;
+                    isEmpty = true;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Sorry, you should input answer. Please try again.");
+                    Console.ResetColor();
+                }
+            }
+            return resultString;
+        }
     }
 }

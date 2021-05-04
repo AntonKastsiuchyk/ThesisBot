@@ -60,7 +60,7 @@ namespace MiniBot.Activity
         static int ShowProductsFromMenu()
         {
             Logger.Debug("Show pizzas or drinks to user.");
-        Startloop:
+        startloop:
             Console.ForegroundColor = ConsoleColor.Green;
             int answer = Support.Support.GetIntFromConsole();
             Console.ResetColor();
@@ -79,16 +79,16 @@ namespace MiniBot.Activity
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nPlease input correct answer. Please try again. (1 or 2)");
                     Console.ResetColor();
-                    goto Startloop;
+                    goto startloop;
             }
             return answer;
         }
 
         internal void ChoosePizza()
         {
-        Startloop:
+        startloop:
             Logger.Debug("User choose pizza from list.");
-            Console.WriteLine("Please input № of product to add this product to basket." +
+            Console.WriteLine("\nPlease input № of product to add this product to basket." +
                 "\nTo exit please input - 0.");
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -100,7 +100,7 @@ namespace MiniBot.Activity
                 _basket.AddById(answerId);
                 if (AddNewProductFromSameList(answerId))
                 {
-                    goto Startloop;
+                    goto startloop;
                 }
             }
             else if (answerId == 0)
@@ -112,15 +112,15 @@ namespace MiniBot.Activity
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nPlease input correct № of product. Please try again.");
                 Console.ResetColor();
-                goto Startloop;
+                goto startloop;
             }
         }
 
         internal void ChooseDrink()
         {
-        Startloop:
+        startloop:
             Logger.Debug("User choose drink from list.");
-            Console.WriteLine("Please input № of product to add this product to basket." +
+            Console.WriteLine("\nPlease input № of product to add this product to basket." +
                 "\nTo exit please input - 0.");
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -132,7 +132,7 @@ namespace MiniBot.Activity
                 _basket.AddById(answerId);
                 if (AddNewProductFromSameList(answerId))
                 {
-                    goto Startloop;
+                    goto startloop;
                 }
             }
             else if (answerId == 0)
@@ -144,35 +144,34 @@ namespace MiniBot.Activity
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nPlease input correct № of product. Please try again.");
                 Console.ResetColor();
-                goto Startloop;
+                goto startloop;
             }
         }
 
         bool AddNewProductFromSameList(int answerId)
         {
-            bool isSomethingElse = false;
-            Console.WriteLine($"\nExcellent! Product №{answerId} in your basket!" +
+            bool isUserAddSomethingElse = false;
+            Console.WriteLine($"\nExcellent! Product № {answerId} in your basket!" +
                     $"\nAre you want to add something to your basket from this list of menu?" +
                     "\nFor \"yes\" please input - 1\nFor \"no\" please input - 0");
-        LoopForChoise:
+        startloop:
             Console.ForegroundColor = ConsoleColor.Green;
             int answerChoice = Support.Support.GetIntFromConsole();
-            Console.WriteLine();
             Console.ResetColor();
             switch (answerChoice)
             {
                 case 0:
                     break;
                 case 1:
-                    isSomethingElse = true;
+                    isUserAddSomethingElse = true;
                     break;
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nPlease input correct answer. Please try again. (1 or 0)");
                     Console.ResetColor();
-                    goto LoopForChoise;
+                    goto startloop;
             }
-            return isSomethingElse;
+            return isUserAddSomethingElse;
         }
 
         internal bool ShowBasketOrMenu()
@@ -181,7 +180,7 @@ namespace MiniBot.Activity
             bool isMenu = false;
             Console.WriteLine("\nAre you want to see your basket or want to see our menu? (1 or 0)");
 
-        Startloop:
+        startloop:
             int answer = Support.Support.GetIntFromConsole();
             switch (answer)
             {
@@ -195,7 +194,7 @@ namespace MiniBot.Activity
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nPlease input correct answer. Please try again. (1 or 0)");
                     Console.ResetColor();
-                    goto Startloop;
+                    goto startloop;
             }
             return isMenu;
         }
@@ -203,7 +202,7 @@ namespace MiniBot.Activity
         internal void ActionWithBasket()
         {
             Logger.Debug("User decide what he want to do with his basket.");
-        Startloop:
+        startloop:
             Console.WriteLine("\nPlease choose your next step.\n\t1 - Delete position\n\t2 - Delete all positions\n\t3 - Change amount for position" +
                 "\n\t4 - Return to menu\n\t5 - Submit order\n\t6 - Exit");
             Console.ForegroundColor = ConsoleColor.Green;
@@ -214,16 +213,16 @@ namespace MiniBot.Activity
             {
                 case 1:
                     DeletePositionFromBasket();
-                    goto Startloop;
+                    goto startloop;
                 case 2:
                     DeletAllFromBasket();
-                    goto Startloop;
+                    goto startloop;
                 case 3:
                     ChangeAmountForPosition();
-                    goto Startloop;
+                    goto startloop;
                 case 4:
                     ReturnToMenuAndChooseProduct();
-                    goto Startloop;
+                    goto startloop;
                 case 5:
                     if (!Basket.CheckForEmpty())
                     {
@@ -234,7 +233,7 @@ namespace MiniBot.Activity
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nBasket is empty. Please choose another step.");
                         Console.ResetColor();
-                        goto Startloop;
+                        goto startloop;
                     }
                     break;
                 case 6:
@@ -248,7 +247,7 @@ namespace MiniBot.Activity
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nPlease input correct number of step. Please try again.");
                     Console.ResetColor();
-                    goto Startloop;
+                    goto startloop;
             }
         }
 
@@ -257,25 +256,29 @@ namespace MiniBot.Activity
             Logger.Debug("User delete position from basket by Id of product.");
             if (!Basket.CheckForEmpty())
             {
-                Console.WriteLine("\nPlease input № of product: ");
-            Startloop:
+                Console.WriteLine("\nPlease input № of product or 0 to choose another step: ");
+            startloop:
                 Console.ForegroundColor = ConsoleColor.Green;
                 int idOfProductForDelete = Support.Support.GetIntFromConsole();
                 Console.ResetColor();
-
-                if (Basket.CheckProductAvailability(idOfProductForDelete)
+                if (idOfProductForDelete == 0)
+                {
+                    _basket.GetProducts();
+                    return;
+                }
+                else if (Basket.CheckProductAvailability(idOfProductForDelete)
                     && idOfProductForDelete >= 1 && idOfProductForDelete <= 39)
                 {
                     _basket.DeleteById(idOfProductForDelete);
+                    _basket.GetProducts();
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nPlease input correct № of product. Please try again.");
+                    Console.WriteLine("\nPlease input correct № of product or 0 to choose another step:");
                     Console.ResetColor();
-                    goto Startloop;
+                    goto startloop;
                 }
-                _basket.GetProducts();
             }
             else
             {
@@ -291,7 +294,7 @@ namespace MiniBot.Activity
             if (!Basket.CheckForEmpty())
             {
                 Console.WriteLine("\nAre you sure?\nFor \"yes\" please input - 1\nFor \"no\" please input - 0");
-                Startloop:
+                startloop:
                 Console.ForegroundColor = ConsoleColor.Green;
                 int answer = Support.Support.GetIntFromConsole();
                 Console.ResetColor();
@@ -309,7 +312,7 @@ namespace MiniBot.Activity
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nPlease input correct answer. Please try again. (1 or 0)");
                         Console.ResetColor();
-                        goto Startloop;
+                        goto startloop;
                 }
             }
             else
@@ -325,26 +328,33 @@ namespace MiniBot.Activity
             Logger.Debug("User change amount of product by Id in his basket.");
             if (!Basket.CheckForEmpty())
             {
-                Console.WriteLine("\nPlease input № of product: ");
-            Startloop:
+                Console.WriteLine("\nPlease input № of product or 0 to choose another step: ");
+            startloop:
                 Console.ForegroundColor = ConsoleColor.Green;
                 int idOfProductForUpdate = Support.Support.GetIntFromConsole();
                 Console.ResetColor();
-
-                if (Basket.CheckProductAvailability(idOfProductForUpdate)
+                if (idOfProductForUpdate == 0)
+                {
+                    _basket.GetProducts();
+                    return;
+                }
+                else if (Basket.CheckProductAvailability(idOfProductForUpdate)
                     && idOfProductForUpdate >= 1 && idOfProductForUpdate <= 39)
                 {
                     Console.WriteLine("\nPlease input amount:");
                     Console.ForegroundColor = ConsoleColor.Green;
                     int amountOfUser = Support.Support.GetIntFromConsole();
                     Console.ResetColor();
-                    if (amountOfUser == 0)
+                    switch (amountOfUser)
                     {
-                        _basket.DeleteById(idOfProductForUpdate);
-                    }
-                    else
-                    {
-                        _basket.UpdateById(idOfProductForUpdate, amountOfUser);
+                        case 0:
+                            _basket.DeleteById(idOfProductForUpdate);
+                            _basket.GetProducts();
+                            break;
+                        default:
+                            _basket.UpdateById(idOfProductForUpdate, amountOfUser);
+                            _basket.GetProducts();
+                            break;
                     }
                 }
                 else
@@ -352,9 +362,8 @@ namespace MiniBot.Activity
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nPlease input correct № of product. Please try again.");
                     Console.ResetColor();
-                    goto Startloop;
-                }
-                _basket.GetProducts();
+                    goto startloop;
+                }  
             }
             else
             {
@@ -415,7 +424,7 @@ namespace MiniBot.Activity
         {
             Logger.Debug("User decide to see menu again.");
             AssistantBot assistant = new AssistantBot();
-        Startloop:
+        startloop:
             int answerForThisCase = ShowMenuToUser();
             if (answerForThisCase == 1)
             {
@@ -427,7 +436,7 @@ namespace MiniBot.Activity
             }
             if (assistant.ShowBasketOrMenu())
             {
-                goto Startloop;
+                goto startloop;
             }
         }
 
@@ -561,8 +570,8 @@ namespace MiniBot.Activity
         internal bool GetNewOrder()
         {
             bool isNewOrder = false;
-            Console.WriteLine("\nAre you want make new order?\nFor \"yes\" please input - 1\nFor \"no\" please input - 0");
-        Startloop:
+            Console.WriteLine("\nAre you want to make new order?\nFor \"yes\" please input - 1\nFor \"no\" please input - 0");
+        startloop:
             Console.ForegroundColor = ConsoleColor.Green;
             int answer = Support.Support.GetIntFromConsole();
             Console.ResetColor();
@@ -582,7 +591,7 @@ namespace MiniBot.Activity
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\nPlease input correct № of product. Please try again.");
                     Console.ResetColor();
-                    goto Startloop;
+                    goto startloop;
             }
             return isNewOrder;
         }

@@ -18,7 +18,7 @@ namespace MiniBot
             Logger.Debug("Start debug.");
             AssistantBot.Hello();
 
-        Startloop:
+        startloop:
             AssistantBot assistant = new AssistantBot();
             int answer = assistant.ShowMenuToUser();
 
@@ -34,7 +34,7 @@ namespace MiniBot
 
             if (assistant.ShowBasketOrMenu())
             {
-                goto Startloop;
+                goto startloop;
             }
 
             assistant.ActionWithBasket();
@@ -42,7 +42,7 @@ namespace MiniBot
             if (assistant.GetNewOrder())
             {
                 assistant = null;
-                goto Startloop;
+                goto startloop;
             }
 
             Logger.Debug("Solution сompleted successfully.");
