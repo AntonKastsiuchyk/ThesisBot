@@ -13,4 +13,8 @@
     <ProjectReference Include="..\LogCustom\LogCustom.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="JsonBase\" />
+  </ItemGroup>
+
 </Project>

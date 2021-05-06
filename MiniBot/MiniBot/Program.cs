@@ -1,13 +1,5 @@
-﻿using System;
-using MiniBot.Entities;
-using Newtonsoft.Json;
-using System.IO;
-using System.Collections.Generic;
-using MiniBot.Activity;
-using MiniBot.ProductRepositories;
+﻿using MiniBot.Activity;
 using LogCustom;
-using System.Net.Mail;
-using System.Net;
 
 namespace MiniBot
 {
@@ -43,6 +35,10 @@ namespace MiniBot
             {
                 assistant = null;
                 goto startloop;
+            }
+            else
+            {
+                assistant = null;
             }
 
             Logger.Debug("Solution сompleted successfully.");

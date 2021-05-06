@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace LogCustom
 {
     sealed class LogWriter
     {
-        StringBuilder _nameOfFile = new StringBuilder(@"C:\Users\user\source\repos\AntonKastsiuchyk\ITAcademy.MiniBot\MiniBot\MiniBot\bin\Debug\net5.0\Logs" +
+        StringBuilder _nameOfFile = new StringBuilder(Directory.CreateDirectory("Logs") + @".\" +
             "\\" + "log " + DateTime.UtcNow.ToString("yyyy-MM-dd_") + 1.ToString() + ".txt");
 
         internal void LogWriteDebug(string logMessage)
@@ -47,9 +43,9 @@ namespace LogCustom
                 FileInfo fileInfo1 = new FileInfo(_nameOfFile.ToString());
                 if (fileInfo.Length > 30_000 && fileInfo1.Length > 30_000)
                 {
-                    _nameOfFile.Remove(115, 1);
+                    _nameOfFile.Remove(22, 1);
                     counterFileName++;
-                    _nameOfFile.Insert(115, counterFileName.ToString());
+                    _nameOfFile.Insert(22, counterFileName.ToString());
                     goto startloop;
                 }
             }

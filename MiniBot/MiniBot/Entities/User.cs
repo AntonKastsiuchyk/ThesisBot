@@ -2,11 +2,8 @@
 using MiniBot.Events;
 using MiniBot.Exceptions;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace MiniBot.Entities
 {
@@ -119,7 +116,8 @@ namespace MiniBot.Entities
             int stringSplitCountWhiteSpace = email.Split(' ').Length;
             bool countWhiteSpace = stringSplitCountWhiteSpace == 1;
 
-            if (!countAtSign || isEmptyFirstString || isEmptySecondString || !countWhiteSpace || !countDotInFirstString || !countDotInSecondString)
+            if (Regex.Matches(email, @"\p{IsCyrillic}").Count > 0 || !countAtSign || isEmptyFirstString || isEmptySecondString 
+                || !countWhiteSpace || !countDotInFirstString || !countDotInSecondString)
             {
                 throw new EmailMessageException($"Email is invalid: {email}.");
             }

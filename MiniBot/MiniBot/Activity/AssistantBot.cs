@@ -150,7 +150,7 @@ namespace MiniBot.Activity
 
         bool AddNewProductFromSameList(int answerId)
         {
-            bool isUserAddSomethingElse = false;
+            bool isUserWantSomethingElse = false;
             Console.WriteLine($"\nExcellent! Product № {answerId} in your basket!" +
                     $"\nAre you want to add something to your basket from this list of menu?" +
                     "\nFor \"yes\" please input - 1\nFor \"no\" please input - 0");
@@ -163,7 +163,7 @@ namespace MiniBot.Activity
                 case 0:
                     break;
                 case 1:
-                    isUserAddSomethingElse = true;
+                    isUserWantSomethingElse = true;
                     break;
                 default:
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -171,7 +171,7 @@ namespace MiniBot.Activity
                     Console.ResetColor();
                     goto startloop;
             }
-            return isUserAddSomethingElse;
+            return isUserWantSomethingElse;
         }
 
         internal bool ShowBasketOrMenu()
@@ -261,6 +261,7 @@ namespace MiniBot.Activity
                 Console.ForegroundColor = ConsoleColor.Green;
                 int idOfProductForDelete = Support.Support.GetIntFromConsole();
                 Console.ResetColor();
+
                 if (idOfProductForDelete == 0)
                 {
                     _basket.GetProducts();
@@ -270,6 +271,9 @@ namespace MiniBot.Activity
                     && idOfProductForDelete >= 1 && idOfProductForDelete <= 39)
                 {
                     _basket.DeleteById(idOfProductForDelete);
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("\nSuccessfully!");
+                    Console.ResetColor();
                     _basket.GetProducts();
                 }
                 else
@@ -303,6 +307,9 @@ namespace MiniBot.Activity
                 {
                     case 1:
                         _basket.Reset();
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("\nSuccessfully!");
+                        Console.ResetColor();
                         _basket.GetProducts();
                         break;
                     case 0:
@@ -333,6 +340,7 @@ namespace MiniBot.Activity
                 Console.ForegroundColor = ConsoleColor.Green;
                 int idOfProductForUpdate = Support.Support.GetIntFromConsole();
                 Console.ResetColor();
+
                 if (idOfProductForUpdate == 0)
                 {
                     _basket.GetProducts();
@@ -349,10 +357,16 @@ namespace MiniBot.Activity
                     {
                         case 0:
                             _basket.DeleteById(idOfProductForUpdate);
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.WriteLine("\nSuccessfully!");
+                            Console.ResetColor();
                             _basket.GetProducts();
                             break;
                         default:
                             _basket.UpdateById(idOfProductForUpdate, amountOfUser);
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.WriteLine("\nSuccessfully!");
+                            Console.ResetColor();
                             _basket.GetProducts();
                             break;
                     }
@@ -384,7 +398,7 @@ namespace MiniBot.Activity
                 float discountOrder = _basket.AddDiscount(_basket);
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine($"\nThank you for your order! \nOrder: ");
+                Console.WriteLine($"Thank you for your order! \nOrder: ");
                 _basket.ShowShortInfo();
                 Console.WriteLine("\nTotal price of your order: {0:0.00}$", discountOrder);
                 Console.WriteLine($"Adress: {_user.Adress}");
@@ -403,9 +417,9 @@ namespace MiniBot.Activity
             {
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine($"\nThank you for your order! \nOrder №{Basket.Id}: ");
+                Console.WriteLine($"Thank you for your order! \nOrder №{Basket.Id}: ");
                 _basket.ShowShortInfo();
-                Console.WriteLine("Total price of your order: {0:0.00}$", _basket.TotalPrice);
+                Console.WriteLine("\nTotal price of your order: {0:0.00}$", _basket.TotalPrice);
                 Console.WriteLine($"Adress: {_user.Adress}");
                 Console.WriteLine($"\n{_user.Name}, please check your email {_user.Email} and check status of your order.");
                 Console.ResetColor();

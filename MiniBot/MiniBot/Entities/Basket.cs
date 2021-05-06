@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MiniBot.Entities
 {
@@ -33,7 +31,7 @@ namespace MiniBot.Entities
             Logger.Debug("Add product to basket by Id.");
             ProductViewModel products = JsonConvert.DeserializeObject<ProductViewModel>
                 (File.ReadAllText
-                (@"C:\Users\user\source\repos\AntonKastsiuchyk\ITAcademy.MiniBot\MiniBot\MiniBot\bin\Debug\net5.0\JsonBase\ProductViewModel.json"));
+                (Support.Support.GetCurrentDirectory() + @"\JsonBase\ProductViewModel.json"));
 
             if (id >= 1 && id <= 30)
             {

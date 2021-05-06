@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace MiniBot.Support
 {
-    internal class Support
+    sealed class Support
     {
         public static int GetIntFromConsole()
         {
@@ -52,6 +49,12 @@ namespace MiniBot.Support
                 }
             }
             return resultString;
+        }
+
+        public static string GetCurrentDirectory()
+        {
+            string currentDirectory = Directory.GetCurrentDirectory();
+            return currentDirectory.Split(new string[] { "\\bin" }, StringSplitOptions.None)[0];
         }
     }
 }
