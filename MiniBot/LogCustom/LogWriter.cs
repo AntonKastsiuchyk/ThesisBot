@@ -6,8 +6,8 @@ namespace LogCustom
 {
     sealed class LogWriter
     {
-        StringBuilder _nameOfFile = new StringBuilder(Directory.CreateDirectory("Logs") + @".\" +
-            "\\" + "log " + DateTime.UtcNow.ToString("yyyy-MM-dd_") + 1.ToString() + ".txt");
+        StringBuilder _nameOfFile = new StringBuilder(Directory.CreateDirectory("Logs") + @".\\" + 
+            "log " + DateTime.UtcNow.ToString("yyyy-MM-dd_") + 1.ToString() + ".txt");
 
         internal void LogWriteDebug(string logMessage)
         {
