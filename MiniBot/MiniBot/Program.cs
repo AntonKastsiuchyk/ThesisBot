@@ -7,7 +7,7 @@ namespace MiniBot
     {
         static void Main(string[] args)
         {
-            Logger.Debug("Start debug.");
+            Logger.Info("Start debug.");
             AssistantBot.Hello();
 
         startloop:
@@ -41,7 +41,7 @@ namespace MiniBot
                 assistant = null;
             }
 
-            Logger.Debug("Solution сompleted successfully.");
+            Logger.Info("Solution сompleted successfully.");
         }
     }
 }

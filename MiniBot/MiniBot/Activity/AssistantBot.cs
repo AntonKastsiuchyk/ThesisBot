@@ -521,7 +521,7 @@ namespace MiniBot.Activity
 
         async Task SendEmailOrderReceive(string email, string name)
         {
-            Logger.Info("Get information of first Email.");
+            Logger.Debug("Get information of first Email.");
             MailAddress from = new MailAddress("it-academy-minibot@mail.ru", "IT-Academy Pizza");
             MailAddress to = new MailAddress(email);
 
@@ -537,7 +537,7 @@ namespace MiniBot.Activity
 
         void SendEmailOrderIsOnTheWay(string email, string name)
         {
-            Logger.Info("Get information of second Email.");
+            Logger.Debug("Get information of second Email.");
             MailAddress from = new MailAddress("it-academy-minibot@mail.ru", "IT-Academy Pizza");
             MailAddress to = new MailAddress(email);
 
@@ -560,7 +560,7 @@ namespace MiniBot.Activity
 
         void SendEmailOrderDelivered(string email, string name)
         {
-            Logger.Info("Get information of final Email.");
+            Logger.Debug("Get information of final Email.");
             MailAddress from = new MailAddress("it-academy-minibot@mail.ru", "IT-Academy Pizza");
             MailAddress to = new MailAddress(email);
 

@@ -13,10 +13,13 @@ namespace LogCustom
             var methodInfo = new StackFrame(1).GetMethod();
             Thread thread = Thread.CurrentThread;
             LogWriter logWriter = new LogWriter();
-            logWriter.LogWriteDebug($"Thread: Priority: {thread.Priority}, Id: {thread.ManagedThreadId}, Background: {thread.IsBackground}, " +
+            if (methodInfo.ReflectedType != null)
+            {
+                logWriter.LogWriteDebug($"Thread: Priority: {thread.Priority}, Id: {thread.ManagedThreadId}, Background: {thread.IsBackground}, " +
                 $"Pool: {thread.IsThreadPoolThread}, State: {thread.ThreadState}."
                 + $"\nLocation: Namespace: {methodInfo.ReflectedType.FullName}." +
                 $" Method: {methodInfo.Name}." + $"\nMessage: {messageTemplate}");
+            }
         }
 
         public static void Info(string messageTemplate)
@@ -34,7 +37,7 @@ namespace LogCustom
                + $"\nLocation: Namespace: {methodInfo.ReflectedType.FullName}." +
                $" Method: {methodInfo.Name}." + $"\nMessage: {messageTemplate}";
 
-            var methodResult = methodLogWriteInfo.Invoke(obj, new object[] { resultLogString });
+            methodLogWriteInfo?.Invoke(obj, new object[] { resultLogString });
         }
 
         public static void Error(string messageTemplate)
@@ -42,10 +45,13 @@ namespace LogCustom
             var methodInfo = new StackFrame(1).GetMethod();
             Thread thread = Thread.CurrentThread;
             LogWriter logWriter = new LogWriter();
-            logWriter.LogWriteError($"Thread: Priority: {thread.Priority}, Id: {thread.ManagedThreadId}, Background: {thread.IsBackground}, " +
+            if (methodInfo.ReflectedType != null)
+            {
+                logWriter.LogWriteError($"Thread: Priority: {thread.Priority}, Id: {thread.ManagedThreadId}, Background: {thread.IsBackground}, " +
                 $"Pool: {thread.IsThreadPoolThread}, State: {thread.ThreadState}."
                 + $"\nLocation: Namespace: {methodInfo.ReflectedType.FullName}." +
                 $" Method: {methodInfo.Name}." + $"\nMessage: {messageTemplate}");
+            }
         }
     }
 }

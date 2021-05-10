@@ -6,9 +6,6 @@ namespace LogCustom
 {
     sealed class LogWriter
     {
-        StringBuilder _nameOfFile = new StringBuilder(Directory.CreateDirectory("Logs") + @".\\" + 
-            "log " + DateTime.UtcNow.ToString("yyyy-MM-dd_") + 1.ToString() + ".txt");
-
         internal void LogWriteDebug(string logMessage)
         {
             using (StreamWriter streamWriter = File.AppendText(CheckNameOfFile()))
@@ -35,21 +32,25 @@ namespace LogCustom
 
         string CheckNameOfFile()
         {
-            FileInfo fileInfo = new FileInfo(_nameOfFile.ToString());
+            string file = Directory.CreateDirectory("Logs") + @".\\" +
+            "log " + DateTime.UtcNow.ToString("yyyy-MM-dd_");
+            string format = ".txt";
             int counterFileName = 1;
+        
+            string nameOfFile = file + counterFileName + format;
         startloop:
-            if (File.Exists(_nameOfFile.ToString()))
+            FileInfo fileInfo = new FileInfo(nameOfFile);
+
+            if (File.Exists(nameOfFile))
             {
-                FileInfo fileInfo1 = new FileInfo(_nameOfFile.ToString());
-                if (fileInfo.Length > 30_000 && fileInfo1.Length > 30_000)
+                if (fileInfo.Length > 30_000)
                 {
-                    _nameOfFile.Remove(22, 1);
                     counterFileName++;
-                    _nameOfFile.Insert(22, counterFileName.ToString());
+                    nameOfFile = file + counterFileName + format;
                     goto startloop;
                 }
             }
-            return _nameOfFile.ToString();
+            return nameOfFile;
         }
 
         void LogForDebug(string logMessage, TextWriter txtWriter)
