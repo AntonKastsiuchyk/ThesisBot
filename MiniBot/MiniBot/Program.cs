@@ -41,7 +41,7 @@ namespace MiniBot
                 assistant = null;
             }
 
-            Logger.Info("Solution сompleted successfully.");
+            Logger.Info("Solution completed successfully.");
         }
     }
 }

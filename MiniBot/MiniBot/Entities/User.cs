@@ -7,16 +7,16 @@ using System.Text.RegularExpressions;
 
 namespace MiniBot.Entities
 {
-    [DebuggerDisplay("Name = {Name}; Email = {Email}; Adress = {Adress}")]
+    [DebuggerDisplay("Name = {Name}; Email = {Email}; Address = {Address}")]
     class User
     {
         public string Name { get; set; }
 
         public string Email { get; set; }
 
-        public string Adress { get; set; }
+        public string Address { get; set; }
 
-        public event EventHandler<UserEmailContainAdressEventArgs> UserEmailContainAdress;
+        public event EventHandler<UserEmailContainAddressEventArgs> UserEmailContainAddress;
 
         string GetName()
         {
@@ -27,9 +27,9 @@ namespace MiniBot.Entities
             return Name = name;
         }
 
-        string GetAdress()
+        string GetAddress()
         {
-            Console.WriteLine("\nPlease input your adress.");
+            Console.WriteLine("\nPlease input your address.");
 
             Console.WriteLine("City: ");
             string city = Support.Support.CheckStringForEmpty();
@@ -45,14 +45,14 @@ namespace MiniBot.Entities
             var numberOfFlat = Support.Support.GetIntFromConsole();
             Console.ResetColor();
 
-            Adress = $"{city}, {street}, {numberOfHouse} - {numberOfFlat}";
-            return Adress;
+            Address = $"{city}, {street}, {numberOfHouse} - {numberOfFlat}";
+            return Address;
         }
 
         string GetEmail()
         {
             Console.WriteLine("\nPlease input your email (example@example.com): ");
-        Startloop:
+        startloop:
             Console.ForegroundColor = ConsoleColor.Green;
             string email = Console.ReadLine();
             Console.ResetColor();
@@ -63,11 +63,11 @@ namespace MiniBot.Entities
             }
             catch (EmailMessageException ex)
             {
-                Logger.Error($"{ex.Message}");
+                Logger.Error(ex.Message);
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nYour email is invalid. Please try again. (example@example.com)");
                 Console.ResetColor();
-                goto Startloop;
+                goto startloop;
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@ namespace MiniBot.Entities
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nYour email is invalid. Please try again. (example@example.com)");
                 Console.ResetColor();
-                goto Startloop;
+                goto startloop;
             }
 
             Email = email; 
@@ -86,9 +86,9 @@ namespace MiniBot.Entities
         {
             Logger.Debug("Get all info of user.");
             GetName();
-            GetAdress();
+            GetAddress();
             GetEmail();
-            OnUserEmailContainAdress(new UserEmailContainAdressEventArgs(Email, Name));
+            OnUserEmailContainAddress(new UserEmailContainAddressEventArgs(Email, Name));
         }
 
         static void CheckEmail(string email)
@@ -96,7 +96,7 @@ namespace MiniBot.Entities
             Logger.Debug("Check Email of user.");
             if (string.IsNullOrWhiteSpace(email))
             {
-                throw new EmailMessageException($"Email is empty.");
+                throw new EmailMessageException("Email is empty.");
             }
 
             string[] splitEmail = email.Split('@');
@@ -123,9 +123,9 @@ namespace MiniBot.Entities
             }
         }
 
-        protected virtual void OnUserEmailContainAdress(UserEmailContainAdressEventArgs eventArgs)
+        protected virtual void OnUserEmailContainAddress(UserEmailContainAddressEventArgs eventArgs)
         {
-            UserEmailContainAdress?.Invoke(this, eventArgs);
+            UserEmailContainAddress?.Invoke(this, eventArgs);
         }
     }
 }

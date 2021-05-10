@@ -15,7 +15,7 @@ namespace MiniBot.Entities
 
         public override string ToString()
         {
-            return string.Format("№ {0}. {1} \nCost {2:0.00}$ | Size {3}cm | Weight {4}gms \n{5}\n", Id, Name, Cost, Size, Weight, Description);
+            return $"№ {Id}. {Name} \nCost {Cost:0.00}$ | Size {Size}cm | Weight {Weight}gms \n{Description}\n";
         }
     }
 }

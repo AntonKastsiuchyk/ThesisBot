@@ -19,7 +19,7 @@ namespace MiniBot.Entities
 
         public string ShowInfo()
         {
-            return string.Format("\n\t№ {0}. {1}. Cost: {2:0.00}$. {3} pc.", Id, Name, Cost, Amount);
+            return $"\n\t№ {Id}. {Name}. Cost: {Cost:0.00}$. {Amount} pc.";
         }
     }
 }

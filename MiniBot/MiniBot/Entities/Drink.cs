@@ -12,7 +12,7 @@ namespace MiniBot.Entities
 
         public override string ToString()
         {
-            return string.Format("№ {0}. {1} \nCost {2:0.00}$ | Volume {3}l \n{4}\n", Id, Name, Cost, Volume, Description);
+            return $"№ {Id}. {Name} \nCost {Cost:0.00}$ | Volume {Volume}l \n{Description}\n";
         }
     }
 }

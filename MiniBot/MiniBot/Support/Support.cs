@@ -54,7 +54,7 @@ namespace MiniBot.Support
         public static string GetCurrentDirectory()
         {
             string currentDirectory = Directory.GetCurrentDirectory();
-            return currentDirectory.Split(new string[] { "\\bin" }, StringSplitOptions.None)[0];
+            return currentDirectory.Split(new[] { "\\bin" }, StringSplitOptions.None)[0];
         }
     }
 }

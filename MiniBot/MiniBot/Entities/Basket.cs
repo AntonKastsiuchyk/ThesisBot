@@ -35,31 +35,23 @@ namespace MiniBot.Entities
 
             if (id >= 1 && id <= 30)
             {
-                Product pizza = products.Pizzas.Where(i => id == i.Id).FirstOrDefault();
+                Product pizza = products.Pizzas.FirstOrDefault(i => id == i.Id);
 
-                if (!CheckReplicant(id))
+                if (!CheckReplication(id))
                 {
                     _products.Add(pizza);
                     return;
                 }
-                else
-                {
-                    return;
-                }
+                return;
             }
 
             if (id >= 31 && id <= 39)
             {
-                Product drink = products.Drinks.Where(i => id == i.Id).FirstOrDefault();
+                Product drink = products.Drinks.FirstOrDefault(i => id == i.Id);
 
-                if (!CheckReplicant(id))
+                if (!CheckReplication(id))
                 {
                     _products.Add(drink);
-                    return;
-                }
-                else
-                {
-                    return;
                 }
             }
         }
@@ -67,7 +59,7 @@ namespace MiniBot.Entities
         internal void DeleteById(int id)
         {
             Logger.Debug("Delete product from basket by Id.");
-            var product = _products.Where(i => i.Id == id).FirstOrDefault();
+            var product = _products.FirstOrDefault(i => i.Id == id);
             _products.Remove(product);
         }
 
@@ -96,7 +88,7 @@ namespace MiniBot.Entities
         internal void UpdateById(int id, int amount)
         {
             Logger.Debug("Add amount to product by Id.");
-            Product product = _products.Where(i => i.Id == id).FirstOrDefault();
+            Product product = _products.FirstOrDefault(i => i.Id == id);
             _products.Remove(product);
             product.Amount = amount;
             _products.Add(product);
@@ -106,7 +98,7 @@ namespace MiniBot.Entities
         {
             bool isProduct = false;
             Logger.Debug("Check availability of product by Id in basket.");
-            Product product = _products.Where(i => i.Id == id).FirstOrDefault();
+            Product product = _products.FirstOrDefault(i => i.Id == id);
             if (product != default)
             {
                 isProduct = true;
@@ -114,10 +106,10 @@ namespace MiniBot.Entities
             return isProduct;
         }
 
-        internal bool CheckReplicant(int id)
+        bool CheckReplication(int id)
         {
             bool isReplicant = false;
-            Product product = _products.Where(i => i.Id == id).FirstOrDefault();
+            Product product = _products.FirstOrDefault(i => i.Id == id);
 
             if (product != default)
             {

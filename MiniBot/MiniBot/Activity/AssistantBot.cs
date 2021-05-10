@@ -31,16 +31,16 @@ namespace MiniBot.Activity
             Logger.Debug("Greeting.");
             switch (true)
             {
-                case bool morning when morning = DateTime.Now.Hour >= 8 && DateTime.Now.Hour < 12:
+                case bool morning when morning == DateTime.Now.Hour >= 8 && DateTime.Now.Hour < 12:
                     Console.WriteLine("Good morning! Welcome to IT-Academy Pizza!");
                     break;
-                case bool day when day = DateTime.Now.Hour >= 12 && DateTime.Now.Hour < 16:
+                case bool day when day == DateTime.Now.Hour >= 12 && DateTime.Now.Hour < 16:
                     Console.WriteLine("Good day! Welcome to IT-Academy Pizza!");
                     break;
-                case bool evening when evening = DateTime.Now.Hour >= 16 && DateTime.Now.Hour < 22:
+                case bool evening when evening == DateTime.Now.Hour >= 16 && DateTime.Now.Hour < 22:
                     Console.WriteLine("Good evening! Welcome to IT-Academy Pizza!");
                     break;
-                case bool night when night = DateTime.Now.Hour >= 22 || DateTime.Now.Hour < 8:
+                case bool night when night == (DateTime.Now.Hour >= 22 || DateTime.Now.Hour < 8):
                     Console.WriteLine("Good night! Welcome to IT-Academy Pizza!");
                     break;
                 default:
@@ -215,7 +215,7 @@ namespace MiniBot.Activity
                     DeletePositionFromBasket();
                     goto startloop;
                 case 2:
-                    DeletAllFromBasket();
+                    DeleteAllFromBasket();
                     goto startloop;
                 case 3:
                     ChangeAmountForPosition();
@@ -292,7 +292,7 @@ namespace MiniBot.Activity
             }
         }
 
-        void DeletAllFromBasket()
+        void DeleteAllFromBasket()
         {
             Logger.Debug("User delete all positions from basket.");
             if (!Basket.CheckForEmpty())
@@ -390,7 +390,7 @@ namespace MiniBot.Activity
         void SubmitOrder()
         {
             Logger.Debug("User decide to submit order.");
-            _user.UserEmailContainAdress += User_UserEmailContainAdress;
+            _user.UserEmailContainAddress += User_UserEmailContainAddress;
             _user.GetInfoOfUser();
 
             if (_basket.TotalPrice > 20)
@@ -401,7 +401,7 @@ namespace MiniBot.Activity
                 Console.WriteLine($"Thank you for your order! \nOrder: ");
                 _basket.ShowShortInfo();
                 Console.WriteLine("\nTotal price of your order: {0:0.00}$", discountOrder);
-                Console.WriteLine($"Adress: {_user.Adress}");
+                Console.WriteLine($"Address: {_user.Address}");
                 Console.WriteLine($"\n{_user.Name}, please check your email {_user.Email} and check status of your order.");
                 Console.ResetColor();
                 GetRating();
@@ -420,7 +420,7 @@ namespace MiniBot.Activity
                 Console.WriteLine($"Thank you for your order! \nOrder №{Basket.Id}: ");
                 _basket.ShowShortInfo();
                 Console.WriteLine("\nTotal price of your order: {0:0.00}$", _basket.TotalPrice);
-                Console.WriteLine($"Adress: {_user.Adress}");
+                Console.WriteLine($"Address: {_user.Address}");
                 Console.WriteLine($"\n{_user.Name}, please check your email {_user.Email} and check status of your order.");
                 Console.ResetColor();
                 GetRating();
@@ -454,7 +454,7 @@ namespace MiniBot.Activity
             }
         }
 
-        static void User_UserEmailContainAdress(object sender, Events.UserEmailContainAdressEventArgs user)
+        static void User_UserEmailContainAddress(object sender, Events.UserEmailContainAddressEventArgs user)
         {
             Logger.Debug("Start event. Send first Email");
             try
