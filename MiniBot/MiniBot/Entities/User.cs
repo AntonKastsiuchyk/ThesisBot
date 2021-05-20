@@ -42,7 +42,7 @@ namespace MiniBot.Entities
 
             Console.WriteLine("Flat number: ");
             Console.ForegroundColor = ConsoleColor.Green;
-            var numberOfFlat = Support.Support.GetIntFromConsole();
+            int numberOfFlat = Support.Support.GetIntFromConsole();
             Console.ResetColor();
 
             Address = $"{city}, {street}, {numberOfHouse} - {numberOfFlat}";
@@ -63,7 +63,7 @@ namespace MiniBot.Entities
             }
             catch (EmailMessageException ex)
             {
-                Logger.Error(ex.Message);
+                Logger.Error($"{ex.Message} - {email}.");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nYour email is invalid. Please try again. (example@example.com)");
                 Console.ResetColor();
@@ -71,7 +71,7 @@ namespace MiniBot.Entities
             }
             catch (Exception ex)
             {
-                Logger.Error($"{ex.Message}");
+                Logger.Error($"{ex.Message} - {email}.");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nYour email is invalid. Please try again. (example@example.com)");
                 Console.ResetColor();

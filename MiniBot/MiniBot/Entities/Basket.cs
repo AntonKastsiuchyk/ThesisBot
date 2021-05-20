@@ -45,14 +45,11 @@ namespace MiniBot.Entities
                 return;
             }
 
-            if (id >= 31 && id <= 39)
-            {
-                Product drink = products.Drinks.FirstOrDefault(i => id == i.Id);
+            Product drink = products.Drinks.FirstOrDefault(i => id == i.Id);
 
-                if (!CheckReplication(id))
-                {
-                    _products.Add(drink);
-                }
+            if (!CheckReplication(id))
+            {
+                _products.Add(drink);
             }
         }
 

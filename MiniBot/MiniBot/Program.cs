@@ -1,4 +1,5 @@
-﻿using MiniBot.Activity;
+﻿using System;
+using MiniBot.Activity;
 using LogCustom;
 
 namespace MiniBot
@@ -35,10 +36,6 @@ namespace MiniBot
             {
                 assistant = null;
                 goto startloop;
-            }
-            else
-            {
-                assistant = null;
             }
 
             Logger.Info("Solution completed successfully.");

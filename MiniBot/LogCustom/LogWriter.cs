@@ -36,21 +36,21 @@ namespace LogCustom
             "log " + DateTime.UtcNow.ToString("yyyy-MM-dd_");
             string format = ".txt";
             int counterFileName = 1;
-        
-            string nameOfFile = file + counterFileName + format;
-        startloop:
-            FileInfo fileInfo = new FileInfo(nameOfFile);
 
-            if (File.Exists(nameOfFile))
+            string pathOfFile = file + counterFileName + format;
+        startloop:
+            FileInfo logFileInfo = new FileInfo(pathOfFile);
+
+            if (File.Exists(pathOfFile))
             {
-                if (fileInfo.Length > 30_000)
+                if (logFileInfo.Length > 30_000)
                 {
                     counterFileName++;
-                    nameOfFile = file + counterFileName + format;
+                    pathOfFile = file + counterFileName + format;
                     goto startloop;
                 }
             }
-            return nameOfFile;
+            return pathOfFile;
         }
 
         void LogForDebug(string logMessage, TextWriter txtWriter)
