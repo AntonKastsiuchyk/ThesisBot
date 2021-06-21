@@ -1,0 +1,19 @@
+﻿using LogCustom;
+using MiniBot.Entities;
+using System;
+
+namespace MiniBot.Extensions
+{
+    static class BasketExtension
+    {
+        public static float AddDiscount(this Basket basket, Basket userBasket)
+        {
+            Logger.Debug("Add discount to order.");
+            float discountResult = userBasket.TotalPrice - (userBasket.TotalPrice * 0.2f);
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine($"\nSurprise! Discount for you 20 %!");
+            Console.ResetColor();
+            return discountResult;
+        }
+    }
+}

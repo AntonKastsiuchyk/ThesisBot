@@ -1,0 +1,348 @@
+{
+  "Pizzas": [
+    {
+      "Amount": 1,
+      "Cost": 3.0,
+      "Description": "Garlic Sauce, Mozzarella cheese, Spinach, Cherry, Olives, Ham",
+      "Id": 1,
+      "Name": "Riviera Small",
+      "Size": 22,
+      "Weight": 395
+    },
+    {
+      "Size": 30,
+      "Weight": 670,
+      "Name": "Riviera Medium",
+      "Id": 2,
+      "Cost": 4.5,
+      "Description": "Garlic Sauce, Mozzarella cheese, Spinach, Cherry, Olives, Ham",
+      "Amount": 1
+    },
+    {
+      "Size": 36,
+      "Weight": 935,
+      "Name": "Riviera Large",
+      "Id": 3,
+      "Cost": 7.5,
+      "Description": "Garlic Sauce, Mozzarella cheese, Spinach, Cherry, Olives, Ham",
+      "Amount": 1
+    },
+    {
+      "Size": 22,
+      "Weight": 365,
+      "Name": "Carbonara Small",
+      "Id": 4,
+      "Cost": 2.5,
+      "Description": "Onion, Bacon, Fresh Cream, Ham, Champignon, Mozzarella cheese",
+      "Amount": 1
+    },
+    {
+      "Size": 30,
+      "Weight": 565,
+      "Name": "Carbonara Medium",
+      "Id": 5,
+      "Cost": 3.5,
+      "Description": "Onion, Bacon, Fresh Cream, Ham, Champignon, Mozzarella cheese",
+      "Amount": 1
+    },
+    {
+      "Size": 36,
+      "Weight": 855,
+      "Name": "Carbonara Large",
+      "Id": 6,
+      "Cost": 6.5,
+      "Description": "Onion, Bacon, Fresh Cream, Ham, Champignon, Mozzarella cheese",
+      "Amount": 1
+    },
+    {
+      "Size": 22,
+      "Weight": 375,
+      "Name": "Chicken Ranch Small",
+      "Id": 7,
+      "Cost": 2.3,
+      "Description": "Garlic Sauce, Tomatoes, Mozzarella cheese, Chicken",
+      "Amount": 1
+    },
+    {
+      "Size": 30,
+      "Weight": 635,
+      "Name": "Chicken Ranch Medium",
+      "Id": 8,
+      "Cost": 3.5,
+      "Description": "Garlic Sauce, Tomatoes, Mozzarella cheese, Chicken",
+      "Amount": 1
+    },
+    {
+      "Size": 36,
+      "Weight": 945,
+      "Name": "Chicken Ranch Large",
+      "Id": 9,
+      "Cost": 6.3,
+      "Description": "Garlic Sauce, Tomatoes, Mozzarella cheese, Chicken",
+      "Amount": 1
+    },
+    {
+      "Size": 22,
+      "Weight": 380,
+      "Name": "Provence Small",
+      "Id": 10,
+      "Cost": 2.5,
+      "Description": "Tomatoes, Fresh Cream, Blue cheese, Mozzarella cheese, Ham, Pepperoni",
+      "Amount": 1
+    },
+    {
+      "Size": 30,
+      "Weight": 590,
+      "Name": "Provence Medium",
+      "Id": 11,
+      "Cost": 3.8,
+      "Description": "Tomatoes, Fresh Cream, Blue cheese, Mozzarella cheese, Ham, Pepperoni",
+      "Amount": 1
+    },
+    {
+      "Size": 36,
+      "Weight": 900,
+      "Name": "Provence Large",
+      "Id": 12,
+      "Cost": 5.9,
+      "Description": "Tomatoes, Fresh Cream, Blue cheese, Mozzarella cheese, Ham, Pepperoni",
+      "Amount": 1
+    },
+    {
+      "Size": 22,
+      "Weight": 415,
+      "Name": "Munich Small",
+      "Id": 13,
+      "Cost": 3.7,
+      "Description": "Bavarian sausages, Tomatoes, Barbecue sauce, Mustard , Mozzarella cheese, Munich sausages, Ham",
+      "Amount": 1
+    },
+    {
+      "Size": 30,
+      "Weight": 650,
+      "Name": "Munich Medium",
+      "Id": 14,
+      "Cost": 5.1,
+      "Description": "Bavarian sausages, Tomatoes, Barbecue sauce, Mustard , Mozzarella cheese, Munich sausages, Ham",
+      "Amount": 1
+    },
+    {
+      "Size": 36,
+      "Weight": 970,
+      "Name": "Munich Large",
+      "Id": 15,
+      "Cost": 7.1,
+      "Description": "Bavarian sausages, Tomatoes, Barbecue sauce, Mustard , Mozzarella cheese, Munich sausages, Ham",
+      "Amount": 1
+    },
+    {
+      "Size": 22,
+      "Weight": 355,
+      "Name": "Alaska Small",
+      "Id": 16,
+      "Cost": 2.3,
+      "Description": "Munich sausages, Onion, Burger sauce, Mozzarella cheese",
+      "Amount": 1
+    },
+    {
+      "Size": 30,
+      "Weight": 625,
+      "Name": "Alaska Medium",
+      "Id": 17,
+      "Cost": 3.4,
+      "Description": "Munich sausages, Onion, Burger sauce, Mozzarella cheese",
+      "Amount": 1
+    },
+    {
+      "Size": 36,
+      "Weight": 885,
+      "Name": "Alaska Large",
+      "Id": 18,
+      "Cost": 5.3,
+      "Description": "Munich sausages, Onion, Burger sauce, Mozzarella cheese",
+      "Amount": 1
+    },
+    {
+      "Size": 22,
+      "Weight": 365,
+      "Name": "Farm Small",
+      "Id": 19,
+      "Cost": 2.4,
+      "Description": "Cucumbers, Ham, Mozzarella cheese, Garlic Sauce",
+      "Amount": 1
+    },
+    {
+      "Size": 30,
+      "Weight": 585,
+      "Name": "Farm Medium",
+      "Id": 20,
+      "Cost": 3.3,
+      "Description": "Cucumbers, Ham, Mozzarella cheese, Garlic Sauce",
+      "Amount": 1
+    },
+    {
+      "Size": 36,
+      "Weight": 880,
+      "Name": "Farm Large",
+      "Id": 21,
+      "Cost": 5.7,
+      "Description": "Cucumbers, Ham, Mozzarella cheese, Garlic Sauce",
+      "Amount": 1
+    },
+    {
+      "Size": 22,
+      "Weight": 390,
+      "Name": "Spicy Small",
+      "Id": 22,
+      "Cost": 2.6,
+      "Description": "Pepperoni, Jalapeno, Mozzarella cheese, Domino's Tomato Sauce, Bacon, Tomatoes",
+      "Amount": 1
+    },
+    {
+      "Size": 30,
+      "Weight": 615,
+      "Name": "Spicy Medium",
+      "Id": 23,
+      "Cost": 3.9,
+      "Description": "Pepperoni, Jalapeno, Mozzarella cheese, Domino's Tomato Sauce, Bacon, Tomatoes",
+      "Amount": 1
+    },
+    {
+      "Size": 36,
+      "Weight": 915,
+      "Name": "Spicy Large",
+      "Id": 24,
+      "Cost": 7.3,
+      "Description": "Pepperoni, Jalapeno, Mozzarella cheese, Domino's Tomato Sauce, Bacon, Tomatoes",
+      "Amount": 1
+    },
+    {
+      "Size": 22,
+      "Weight": 415,
+      "Name": "Pepperoni Supreme Small",
+      "Id": 25,
+      "Cost": 2.7,
+      "Description": "Special Tomato Sauce, Mozzarella cheese, Pepperoni",
+      "Amount": 1
+    },
+    {
+      "Size": 30,
+      "Weight": 660,
+      "Name": "Pepperoni Supreme Medium",
+      "Id": 26,
+      "Cost": 3.9,
+      "Description": "Special Tomato Sauce, Mozzarella cheese, Pepperoni",
+      "Amount": 1
+    },
+    {
+      "Size": 36,
+      "Weight": 965,
+      "Name": "Pepperoni Supreme Large",
+      "Id": 27,
+      "Cost": 7.3,
+      "Description": "Special Tomato Sauce, Mozzarella cheese, Pepperoni",
+      "Amount": 1
+    },
+    {
+      "Size": 22,
+      "Weight": 395,
+      "Name": "BBQ Small",
+      "Id": 28,
+      "Cost": 2.4,
+      "Description": "Onion, Chicken, Barbecue sauce, Bacon, Champignon, Mozzarella cheese",
+      "Amount": 1
+    },
+    {
+      "Size": 30,
+      "Weight": 580,
+      "Name": "BBQ Medium",
+      "Id": 29,
+      "Cost": 3.5,
+      "Description": "Onion, Chicken, Barbecue sauce, Bacon, Champignon, Mozzarella cheese",
+      "Amount": 1
+    },
+    {
+      "Size": 36,
+      "Weight": 900,
+      "Name": "BBQ Large",
+      "Id": 30,
+      "Cost": 7.2,
+      "Description": "Onion, Chicken, Barbecue sauce, Bacon, Champignon, Mozzarella cheese",
+      "Amount": 1
+    }
+  ],
+  "Drinks": [
+    {
+      "Volume": 0.5,
+      "Name": "Coca Cola Small",
+      "Id": 31,
+      "Cost": 1,
+      "Description": "Coca-Cola. Enjoy. It is a sweet, carbonated cola with little mouthfeel or aftertaste.",
+      "Amount": 1
+    },
+    {
+      "Volume": 1,
+      "Name": "Coca Cola Large",
+      "Id": 32,
+      "Cost": 1.5,
+      "Description": "Coca-Cola. Enjoy. It is a sweet, carbonated cola with little mouthfeel or aftertaste.",
+      "Amount": 1
+    },
+    {
+      "Volume": 0.33,
+      "Name": "Apple Juice \"Rich\"",
+      "Id": 33,
+      "Cost": 1.2,
+      "Description": "Apple juice \"Rich\". Perfect taste and high quality.",
+      "Amount": 1
+    },
+    {
+      "Volume": 0.33,
+      "Name": "Orange Juice \"Rich\"",
+      "Id": 34,
+      "Cost": 1.2,
+      "Description": "Orange juice \"Rich\". Perfect taste and high quality.",
+      "Amount": 1
+    },
+    {
+      "Volume": 0.33,
+      "Name": "Cherry Juice \"Rich\"",
+      "Id": 35,
+      "Cost": 1.2,
+      "Description": "Cherry juice \"Rich\". Perfect taste and high quality.",
+      "Amount": 1
+    },
+    {
+      "Volume": 0.25,
+      "Name": "Black Tea \"Grinfield\" Small",
+      "Id": 36,
+      "Cost": 1.2,
+      "Description": "Black Tea \"Grinfield Golden Ceylon\". Bright aroma and noble flavour of Ceylon tea have conquered the world.",
+      "Amount": 1
+    },
+    {
+      "Volume": 0.45,
+      "Name": "Black Tea \"Grinfield\" Large",
+      "Id": 37,
+      "Cost": 1.5,
+      "Description": "Black Tea \"Grinfield Golden Ceylon\". Bright aroma and noble flavour of Ceylon tea have conquered the world.",
+      "Amount": 1
+    },
+    {
+      "Volume": 0.25,
+      "Name": "Green Tea \"Grinfield\" Small",
+      "Id": 38,
+      "Cost": 1.2,
+      "Description": "Green Tea \"Grinfield Flying Dragon\". Classic mild flavour and exquisite flowery aroma of tea refreshes and invigorates your mind.",
+      "Amount": 1
+    },
+    {
+      "Volume": 0.45,
+      "Name": "Green Tea \"Grinfield\" Large",
+      "Id": 39,
+      "Cost": 1.5,
+      "Description": "Green Tea \"Grinfield Flying Dragon\". Classic mild flavour and exquisite flowery aroma of tea refreshes and invigorates your mind.",
+      "Amount": 1
+    }
+  ]
+}
